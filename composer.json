@@ -1,0 +1,37 @@
+{
+    "name": "awd-studio/nova-poshta",
+    "description": "Integrate with Nova Poshta post company API",
+    "keywords": ["nova", "poshta", "novaposhta", "postservices"],
+    "homepage": "https://github.com/awd-studio/nova-poshta",
+    "type": "library",
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anton Karpov",
+            "email": "awd.com.ua@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/awd-studio/nova-poshta/issues"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "NovaPoshta\\": "src/NovaPoshta/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NovaPoshta\\Tests\\": "tests/NovaPoshta/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
