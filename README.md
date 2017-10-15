@@ -5,7 +5,7 @@
 [![License](https://poser.pugx.org/awd-studio/nova-poshta/license)](https://packagist.org/packages/awd-studio/nova-poshta)
 
 
-# Nova Poshta PHP library
+# Nova Poshta PHP library (alpha)
 ## Integrate your PHP-app with [Nova Poshta](https://novaposhta.ua) post company API
 
 This library can integrates with Nova Poshta API.
@@ -33,16 +33,21 @@ Nova Poshta puts into your service:
 
 ## Features
 - Track packages
-- Getting branch-offices
-- Counting delivery cost
-- Determine the date of delivery
-- Contingency (TTN) management *(future)*
+- ~~Getting branch-offices~~ *(future)*
+- ~~Counting delivery cost~~ *(future)*
+- ~~Determine the date of delivery~~ *(future)*
+- ~~Contingency (TTN) management~~ *(future)*
 
 ## Requirements
 - PHP v5.5.9 or higher *(PHP 7+ is recommended)*
 - [Composer](https://getcomposer.org) package manager
 - An [API token](https://devcenter.novaposhta.ua/blog/%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-api-%D0%BA%D0%BB%D1%8E%D1%87%D0%B0)
 - [Guzzle](https://github.com/guzzle/guzzle) or [PHP_CURL](http://php.net/manual/book.curl.php) libraries for sending HTTP-requests *(optional - you can define yourself HTTP-driver)*
+
+## Install
+```sh
+composer require awd-studio/nova-poshta
+```
 
 ## Usage
 
