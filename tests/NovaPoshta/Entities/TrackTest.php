@@ -18,48 +18,45 @@ use PHPUnit\Framework\TestCase;
 final class TrackTest extends TestCase
 {
 
+    private $trackNum = '01234567890123';
+
+    private $phone = '380000001122';
+
     public function testTrackAddString()
     {
-        $trackNum = '01234567890123';
-        $track    = new Track($trackNum);
+        $track = new Track($this->trackNum);
 
-        $this->assertEquals($track->getId(), $trackNum);
+        $this->assertEquals($track->getId(), $this->trackNum);
     }
 
     public function testTrackAddArray()
     {
-        $trackNum = '01234567890123';
-        $track    = new Track([$trackNum]);
+        $track = new Track([$this->trackNum]);
 
-        $this->assertEquals($track->getId(), $trackNum);
+        $this->assertEquals($track->getId(), $this->trackNum);
     }
 
     public function testTrackAddAssoc()
     {
-        $trackNum = '01234567890123';
-        $track    = new Track(['DocumentNumber' => $trackNum]);
+        $track = new Track(['DocumentNumber' => $this->trackNum]);
 
-        $this->assertEquals($track->getId(), $trackNum);
+        $this->assertEquals($track->getId(), $this->trackNum);
     }
 
     public function testTrackGetPhone()
     {
-        $trackNum = '01234567890123';
-        $phone    = '380000001122';
-        $track    = new Track($trackNum, $phone);
+        $track = new Track($this->trackNum, $this->phone);
 
-        $this->assertEquals($track->getPhone(), $phone);
+        $this->assertEquals($track->getPhone(), $this->phone);
     }
 
     public function testTrackBuild()
     {
-        $trackNum = '01234567890123';
-        $phone    = '380000001122';
-        $track    = new Track($trackNum, $phone);
+        $track    = new Track($this->trackNum, $this->phone);
 
         $this->assertEquals($track->build(), [
-          'DocumentNumber' => $trackNum,
-          'Phone'          => $phone,
+          'DocumentNumber' => $this->trackNum,
+          'Phone'          => $this->phone,
         ]);
     }
 }

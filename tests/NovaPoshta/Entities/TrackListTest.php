@@ -19,10 +19,13 @@ use PHPUnit\Framework\TestCase;
 final class TrackListTest extends TestCase
 {
 
+    private $trackNum = '01234567890123';
+
+    private $trackNums = ['01234567890123', '01234567890124', '01234567890125'];
+
     public function testTrackListIsIterator()
     {
-        $trackNum = '01234567890123';
-        $tl       = new TrackList($trackNum);
+        $tl = new TrackList($this->trackNum);
 
         $this->assertInstanceOf(
           \Iterator::class,
@@ -31,10 +34,9 @@ final class TrackListTest extends TestCase
 
     public function testTrackListForeach()
     {
-        $trackNums = ['01234567890123', '01234567890124', '01234567890125'];
-        $tl        = new TrackList($trackNums);
+        $tl = new TrackList($this->trackNums);
 
-        foreach ($trackNums as $track) {
+        foreach ($this->trackNums as $track) {
             $build = $tl->getTrack($track);
 
             $this->assertInstanceOf(
@@ -47,9 +49,9 @@ final class TrackListTest extends TestCase
 
     public function testTrackListAddTrack()
     {
-        $trackNum    = '01234567890123';
         $trackNumNew = '01234567890124';
-        $tl          = new TrackList(new Track($trackNum));
+
+        $tl = new TrackList(new Track($this->trackNum));
         $tl->addTrack($trackNumNew);
 
         $this->assertEquals($tl->getTrack($trackNumNew)->getId(), $trackNumNew);

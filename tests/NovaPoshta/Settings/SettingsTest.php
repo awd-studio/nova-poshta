@@ -19,6 +19,27 @@ use PHPUnit\Framework\TestCase;
 final class SettingsTest extends TestCase
 {
 
+    /**
+     * Settings instance.
+     *
+     * @var Settings $settings
+     */
+    private $settings;
+
+    /**
+     * An API key.
+     *
+     * @var string
+     */
+    private $key = 'myAPIkey';
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->settings = Settings::getInstance()->auth($this->key);
+    }
+
     public function testSettingsInstance()
     {
         $this->assertInstanceOf(
@@ -29,31 +50,22 @@ final class SettingsTest extends TestCase
 
     public function testValidationKey()
     {
-        $key      = 'myAPIkey';
-        $settings = Settings::getInstance()->auth($key);
+        $this->assertTrue($this->settings->isValid(), 'Validation filled key');
 
-        $this->assertTrue($settings->isValid(), 'Validation filled key');
-
-        $settings->setApiKey('');
-        $this->assertFalse($settings->isValid(), 'Validation empty key');
+        $this->settings->setApiKey('');
+        $this->assertFalse($this->settings->isValid(), 'Validation empty key');
     }
 
     public function testKey()
     {
-        $key      = 'myAPIkey';
-        $settings = Settings::getInstance()->auth($key);
-
-        $this->assertEquals($settings->getApiKey(), $key);
+        $this->assertEquals($this->settings->getApiKey(), $this->key);
     }
 
     public function testDriver()
     {
-        $key      = 'myAPIkey';
-        $settings = Settings::getInstance()->auth($key);
-
         $this->assertInstanceOf(
           HttpInterface::class,
-          $settings->getDriver()
+          $this->settings->getDriver()
         );
     }
 

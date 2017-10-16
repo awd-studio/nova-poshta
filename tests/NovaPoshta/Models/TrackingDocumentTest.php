@@ -20,49 +20,64 @@ use PHPUnit\Framework\TestCase;
 final class TrackingDocumentTest extends TestCase
 {
 
+    /**
+     * Settings instance.
+     *
+     * @var Settings $settings
+     */
+    private $settings;
+
+    /**
+     * TrackingDocument instance.
+     *
+     * @var TrackingDocument $settings
+     */
+    private $track;
+
+    /**
+     * An API key.
+     *
+     * @var string
+     */
+    private $key = 'myAPIkey';
+
+    /**
+     * Tracking number.
+     *
+     * @var string
+     */
+    private $trackNum = '01234567890123';
+
+    /**
+     * Method ID.
+     */
+    const METHOD_ID = 'TrackingDocument';
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->settings = Settings::getInstance()->auth($this->key);
+        $this->track = new TrackingDocument($this->settings);
+    }
+
     public function testModelInstance()
     {
-        $key      = 'myAPIkey';
-        $settings = Settings::getInstance()->auth($key);
-
-        $track = new TrackingDocument($settings);
-
         $this->assertInstanceOf(
           Model::class,
-          $track
+          $this->track
         );
     }
 
     public function testTrackingDocumentModel()
     {
-        $key      = 'myAPIkey';
-        $settings = Settings::getInstance()->auth($key);
-
-        $track = new TrackingDocument($settings);
-
-        $this->assertEquals($track->getModelName(), 'TrackingDocument');
+        $this->assertEquals($this->track->getModelName(), self::METHOD_ID);
     }
 
     public function testTrackingDocumentTrackNum()
     {
-        $key      = 'myAPIkey';
-        $settings = Settings::getInstance()->auth($key);
+        $this->track->setTrackList($this->trackNum);
 
-        $trackNum = '01234567890123';
-        $track    = new TrackingDocument($settings);
-        $track->setTrackList($trackNum);
-
-        $this->assertEquals($track->getTrackList(), $trackNum);
+        $this->assertEquals($this->track->getTrackList(), $this->trackNum);
     }
-
-    //public function testTrackingDocumentBuild()
-    //{
-    //    $key      = 'myAPIkey';
-    //    $settings = Settings::getInstance()->auth($key);
-    //
-    //    $trackNum = ['01234567890123', '01234567890124'];
-    //    $track    = TrackingDocument::track($settings, $trackNum);
-    //
-    //    $this->assertEquals(1, 1);
-    //}
 }

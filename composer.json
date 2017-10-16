@@ -1,7 +1,18 @@
 {
     "name": "awd-studio/nova-poshta",
     "description": "Integrate with Nova Poshta post company API",
-    "keywords": ["nova", "poshta", "novaposhta", "postservices"],
+    "keywords": [
+        "delivery",
+        "delivery-api",
+        "nova",
+        "novaposhta",
+        "novaposhta-api",
+        "poshta",
+        "post",
+        "postservices",
+        "ukraine",
+        "wrapper-api"
+    ],
     "homepage": "https://github.com/awd-studio/nova-poshta",
     "type": "library",
     "require": {
