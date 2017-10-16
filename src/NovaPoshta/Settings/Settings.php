@@ -12,6 +12,7 @@
 namespace NovaPoshta\Settings;
 
 
+use NovaPoshta\Exceptions\NpException;
 use NovaPoshta\Http\CurlHttp;
 use NovaPoshta\Http\GuzzleHttp;
 use NovaPoshta\Http\HttpInterface;
@@ -124,6 +125,10 @@ class Settings
 
     /**
      * Get default HTTP driver.
+     *
+     * @return HttpInterface
+     *
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     private function getDefaultDriver()
     {
@@ -132,7 +137,7 @@ class Settings
         } elseif (function_exists('curl_init')) {
             $driver = new CurlHttp;
         } else {
-            throw new \Exception('You need to install Guzzle library or php_curl om your server!');
+            throw new NpException('You need to install Guzzle library or php_curl om your server!');
         }
 
         return $driver;
@@ -154,8 +159,8 @@ class Settings
      * @param string             $key
      * @param HttpInterface|null $driver
      *
-     * @return $this
-     * @throws \Exception
+     * @return self
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function auth($key, HttpInterface $driver = null)
     {
@@ -166,6 +171,6 @@ class Settings
             return $this;
         }
 
-        throw new \Exception('Settings is not valid!');
+        throw new NpException('Settings is not valid!');
     }
 }

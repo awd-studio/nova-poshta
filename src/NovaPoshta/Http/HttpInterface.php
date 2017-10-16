@@ -29,7 +29,7 @@ interface HttpInterface
      * @param Model $model
      *
      * @return string
-     * @throws \Exception
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function send(Model $model);
 }

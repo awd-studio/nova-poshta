@@ -35,9 +35,25 @@ class TrackList implements Iterator
     /**
      * TrackList constructor.
      *
+     * You can use one of available track-list:
+     * 1. Single track
+     * 2. Array of tracks-list
+     * 3. Array of arrays with keys "DocumentNumber" and "Phone"
+     *
+     * Example:
+     * 1. $tracks = "01234567890123";
+     * 2. $tracks = ["01234567890123", "01234567890124"];
+     * 3. $tracks = [
+     *    [
+     *      "DocumentNumber" => "01234567890123",
+     *      "Phone" => "3809901234567"
+     *    ],
+     *    ["DocumentNumber" => "01234567890123"],
+     * ];
+     *
      * @param mixed $tracks
      *
-     * @throws \Exception
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function __construct($tracks)
     {
@@ -57,7 +73,7 @@ class TrackList implements Iterator
                 $this->container[$track->getId()] = $track->build();
             }
         } else {
-            throw new \Exception('Invalid track numbers!');
+            throw new \NovaPoshta\Exceptions\NpException('Invalid track numbers!');
         }
     }
 

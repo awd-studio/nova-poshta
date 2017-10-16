@@ -12,6 +12,7 @@
 namespace NovaPoshta\Http;
 
 
+use NovaPoshta\Exceptions\NpException;
 use NovaPoshta\Models\Model;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -31,7 +32,7 @@ class GuzzleHttp implements HttpInterface
      * @param Model $model
      *
      * @return string
-     * @throws \Exception
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function send(Model $model)
     {
@@ -52,7 +53,7 @@ class GuzzleHttp implements HttpInterface
 
             return (string) $response->getBody();
         } catch (RequestException $e) {
-            throw new \Exception("GuzzleHttp request failed! Exception: $e");
+            throw new NpException("GuzzleHttp request failed! Exception: {$e->getMessage()}");
         }
     }
 }
