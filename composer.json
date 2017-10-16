@@ -19,7 +19,7 @@
         "php": ">=5.5.9"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.4"
+        "phpunit/phpunit": "~5.7"
     },
     "license": "MIT",
     "authors": [
