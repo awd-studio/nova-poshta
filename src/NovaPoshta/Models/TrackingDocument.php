@@ -46,19 +46,6 @@ class TrackingDocument extends Model implements TrackingDocumentsInterface
 
 
     /**
-     * Build data for methodProperties item.
-     *
-     * @return array
-     */
-    public function getMethodProperties()
-    {
-        return [
-          'Documents' => $this->trackList->getAll(),
-        ];
-    }
-
-
-    /**
      * @return TrackList
      */
     public function getTrackList()
@@ -86,7 +73,7 @@ class TrackingDocument extends Model implements TrackingDocumentsInterface
      *
      * @see \NovaPoshta\Entities\TrackList::__construct
      *
-     * @return string
+     * @return array|string
      */
     public static function track(Settings $settings, $trackList)
     {
@@ -108,8 +95,12 @@ class TrackingDocument extends Model implements TrackingDocumentsInterface
      */
     public function getStatusDocuments(TrackList $trackList)
     {
-        $this->calledMethod = 'getStatusDocuments';
         $this->setTrackList($trackList);
+
+        $this->setCalledMethod('getStatusDocuments');
+        $this->setMethodProperties([
+          'Documents' => $this->getTrackList()->getAll(),
+        ]);
 
         return $this->send();
     }

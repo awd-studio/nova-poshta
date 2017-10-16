@@ -22,36 +22,6 @@ use NovaPoshta\Entities\TrackList;
 interface TrackingDocumentsInterface
 {
 
-
-    /**
-     * Create document.
-     *
-     * ToDo: Implement the method
-     *
-     * @return \NovaPoshta\Http\Response
-     */
-    //public function save();
-
-
-    /**
-     * Update document.
-     *
-     * ToDo: Implement the method
-     *
-     * @return \NovaPoshta\Http\Response
-     */
-    //public function update();
-
-
-    /**
-     * Delete document.
-     *
-     * ToDo: Implement the method
-     *
-     * @return \NovaPoshta\Http\Response
-     */
-    //public function delete();
-
     /**
      * Track documents status.
      * Method should invoke Model::send() method.
@@ -63,44 +33,4 @@ interface TrackingDocumentsInterface
      * @return \NovaPoshta\Http\Response
      */
     public function getStatusDocuments(TrackList $trackList);
-
-
-    /**
-     * Document calculation of cost.
-     *
-     * ToDo: Implement the method
-     *
-     * @return \NovaPoshta\Http\Response
-     */
-    //public function getDocumentPrice();
-
-
-    /**
-     * Calculation of delivery date.
-     *
-     * ToDo: Implement the method
-     *
-     * @return \NovaPoshta\Http\Response
-     */
-    //public function getDocumentDeliveryDate();
-
-
-    /**
-     * Get document list.
-     *
-     * ToDo: Implement the method
-     *
-     * @return \NovaPoshta\Http\Response
-     */
-    //public function getDocumentList();
-
-
-    /**
-     * Generate report about document list.
-     *
-     * ToDo: Implement the method
-     *
-     * @return \NovaPoshta\Http\Response
-     */
-    //public function generateReport();
 }

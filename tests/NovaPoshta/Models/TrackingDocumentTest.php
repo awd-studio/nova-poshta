@@ -30,11 +30,11 @@ final class TrackingDocumentTest extends TestCase
 
 
     /**
-     * TrackingDocument instance.
+     * Model instance.
      *
-     * @var TrackingDocument $settings
+     * @var TrackingDocument $trackingDocument
      */
-    private $track;
+    private $trackingDocument;
 
 
     /**
@@ -63,40 +63,40 @@ final class TrackingDocumentTest extends TestCase
     {
         parent::setUp();
 
-        $this->settings = Settings::getInstance()->auth($this->key);
-        $this->track = new TrackingDocument($this->settings);
+        $this->settings         = Settings::getInstance()->auth($this->key);
+        $this->trackingDocument = new TrackingDocument($this->settings);
     }
 
 
-    public function testModelInstance()
+    public function testTrackingDocumentInstance()
     {
         $this->assertInstanceOf(
           Model::class,
-          $this->track
+          $this->trackingDocument
         );
 
         $this->assertInstanceOf(
           TrackingDocumentsInterface::class,
-          $this->track
+          $this->trackingDocument
         );
     }
 
 
     public function testTrackingDocumentModel()
     {
-        $this->assertEquals($this->track->getModelName(), self::METHOD_ID);
+        $this->assertEquals($this->trackingDocument->getModelName(), self::METHOD_ID);
     }
 
 
     public function testTrackingDocumentTrackNum()
     {
-        $this->track->setTrackList($this->trackNum);
+        $this->trackingDocument->setTrackList($this->trackNum);
 
-        $this->assertEquals($this->track->getTrackList(), $this->trackNum);
+        $this->assertEquals($this->trackingDocument->getTrackList(), $this->trackNum);
     }
 
 
-    public function testTrackingTrack()
+    public function testTrackingDocumentTrack()
     {
         $track = TrackingDocument::track($this->settings, $this->trackNum);
 

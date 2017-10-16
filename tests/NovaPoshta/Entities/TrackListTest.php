@@ -23,6 +23,7 @@ final class TrackListTest extends TestCase
 
     private $trackNums = ['01234567890123', '01234567890124', '01234567890125'];
 
+
     public function testTrackListIsIterator()
     {
         $tl = new TrackList($this->trackNum);
@@ -31,6 +32,7 @@ final class TrackListTest extends TestCase
           \Iterator::class,
           $tl);
     }
+
 
     public function testTrackListForeach()
     {
@@ -46,6 +48,7 @@ final class TrackListTest extends TestCase
             $this->assertEquals($build->getId(), $track);
         }
     }
+
 
     public function testTrackListAddTrack()
     {

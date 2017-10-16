@@ -30,22 +30,29 @@ abstract class Model
      *
      * @var Settings
      */
-    protected $settings;
+    private $settings;
 
     /**
      * API model name.
      *
      * @var string
      */
-    protected $modelName;
-
+    private $modelName;
 
     /**
      * API called method name.
      *
      * @var string
      */
-    protected $calledMethod;
+    private $calledMethod;
+
+    /**
+     * Method properties data.
+     *
+     * @var array
+     */
+    private $methodProperties = [];
+
 
     /**
      * Model constructor.
@@ -60,6 +67,7 @@ abstract class Model
 
         return $this;
     }
+
 
     /**
      * Build request data.
@@ -76,17 +84,22 @@ abstract class Model
           'methodProperties' => $this->getMethodProperties(),
         ];
 
-        foreach ($build as $item) {
-            if (empty($item)) {
-                throw new NpException("Data \"$item\" not allowed!");
+        foreach ($build as $key => $item) {
+            if (empty($item) && $key != 'methodProperties') {
+                throw new NpException("Data \"$key\" not allowed!");
             }
         }
 
         return json_encode($build);
     }
 
+
     /**
      * Execute Driver.
+     *
+     * @return \NovaPoshta\Http\Response
+     *
+     * @throws NpException
      */
     public function send()
     {
@@ -102,6 +115,7 @@ abstract class Model
         }
     }
 
+
     /**
      *
      *
@@ -113,6 +127,7 @@ abstract class Model
     {
         $this->modelName = $model;
     }
+
 
     /**
      * Get called method.
@@ -132,6 +147,7 @@ abstract class Model
         }
     }
 
+
     /**
      * Set called method.
      *
@@ -144,6 +160,7 @@ abstract class Model
         $this->calledMethod = $calledMethod;
     }
 
+
     /**
      * Get current model name.
      *
@@ -153,6 +170,7 @@ abstract class Model
     {
         return $this->modelName;
     }
+
 
     /**
      * Get settings instance.
@@ -164,17 +182,35 @@ abstract class Model
         return $this->settings;
     }
 
+
+    /**
+     * Get current method properties.
+     *
+     * @return array
+     */
+    public function getMethodProperties()
+    {
+        return $this->methodProperties;
+    }
+
+
+    /**
+     * Set method properties.
+     *
+     * @see https://devcenter.novaposhta.ua/docs/services/
+     *
+     * @param array $methodProperties
+     */
+    public function setMethodProperties($methodProperties)
+    {
+        $this->methodProperties = $methodProperties;
+    }
+
+
     /**
      * Model name Id.
      *
      * @return string
      */
     abstract public function getModelId();
-
-    /**
-     * Build data for methodProperties item.
-     *
-     * @return array
-     */
-    abstract public function getMethodProperties();
 }
