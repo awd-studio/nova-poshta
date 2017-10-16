@@ -9,7 +9,7 @@
  * @link     https://github.com/awd-studio/nova-poshta
  */
 
-namespace NovaPoshta\Tests;
+namespace NovaPoshta\Tests\Models;
 
 
 use NovaPoshta\Models\Model;
