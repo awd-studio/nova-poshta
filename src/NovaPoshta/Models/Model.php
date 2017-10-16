@@ -12,6 +12,8 @@
 namespace NovaPoshta\Models;
 
 
+use NovaPoshta\Exceptions\NpException;
+use NovaPoshta\Http\Response;
 use NovaPoshta\Settings\Settings;
 
 
@@ -37,8 +39,9 @@ abstract class Model
      */
     protected $modelName;
 
+
     /**
-     * Called Method.
+     * API called method name.
      *
      * @var string
      */
@@ -62,7 +65,7 @@ abstract class Model
      * Build request data.
      *
      * @return string
-     * @throws \Exception
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function buildData()
     {
@@ -75,7 +78,7 @@ abstract class Model
 
         foreach ($build as $item) {
             if (empty($item)) {
-                throw new \Exception("Data \"$item\" not allowed!");
+                throw new NpException("Data \"$item\" not allowed!");
             }
         }
 
@@ -87,11 +90,24 @@ abstract class Model
      */
     public function send()
     {
-        return $this->settings->getDriver()->send($this);
+        try {
+            return new Response($this->settings->getDriver()->send($this));
+        } catch (NpException $exception) {
+            $error = json_encode([
+              'success' => false,
+              'errors'  => [$exception->getMessage()],
+            ]);
+
+            return new Response($error);
+        }
     }
 
     /**
-     * @param string $model
+     *
+     *
+     * @param string $model Current model name.
+     *
+     * @see https://devcenter.novaposhta.ua/docs/services/
      */
     private function setModelName($model)
     {
@@ -99,7 +115,29 @@ abstract class Model
     }
 
     /**
-     * @param string $calledMethod
+     * Get called method.
+     *
+     * @return string Name of model method.
+     *
+     * @see https://devcenter.novaposhta.ua/docs/services/
+     *
+     * @throws \NovaPoshta\Exceptions\NpException
+     */
+    public function getCalledMethod()
+    {
+        if (!empty($this->calledMethod)) {
+            return $this->calledMethod;
+        } else {
+            throw new NpException('Called method is not allowed!');
+        }
+    }
+
+    /**
+     * Set called method.
+     *
+     * @param string $calledMethod available method for current model.
+     *
+     * @see https://devcenter.novaposhta.ua/docs/services/
      */
     public function setCalledMethod($calledMethod)
     {
@@ -107,21 +145,8 @@ abstract class Model
     }
 
     /**
-     * Get called method.
+     * Get current model name.
      *
-     * @return string
-     * @throws \Exception
-     */
-    public function getCalledMethod()
-    {
-        if (!empty($this->calledMethod)) {
-            return $this->calledMethod;
-        } else {
-            throw new \Exception('Called method is not allowed!');
-        }
-    }
-
-    /**
      * @return string
      */
     public function getModelName()
@@ -130,6 +155,8 @@ abstract class Model
     }
 
     /**
+     * Get settings instance.
+     *
      * @return Settings
      */
     public function getSettings()

@@ -12,6 +12,7 @@
 namespace NovaPoshta\Http;
 
 
+use NovaPoshta\Exceptions\NpException;
 use NovaPoshta\Models\Model;
 
 
@@ -29,7 +30,7 @@ class CurlHttp implements HttpInterface
      * @param Model $model
      *
      * @return string
-     * @throws \Exception
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function send(Model $model)
     {
@@ -59,7 +60,7 @@ class CurlHttp implements HttpInterface
             curl_close($curl);
 
             if ($err) {
-                throw new \Exception("cURL Error #:" . $err);
+                throw new NpException("cURL Error #:" . $err);
             }
         }
 

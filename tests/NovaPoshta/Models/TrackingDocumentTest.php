@@ -13,6 +13,7 @@ namespace NovaPoshta\Tests\Models;
 
 
 use NovaPoshta\Models\Model;
+use NovaPoshta\Models\TrackingDocumentsInterface;
 use NovaPoshta\Settings\Settings;
 use NovaPoshta\Models\TrackingDocument;
 use PHPUnit\Framework\TestCase;
@@ -27,12 +28,14 @@ final class TrackingDocumentTest extends TestCase
      */
     private $settings;
 
+
     /**
      * TrackingDocument instance.
      *
      * @var TrackingDocument $settings
      */
     private $track;
+
 
     /**
      * An API key.
@@ -41,6 +44,7 @@ final class TrackingDocumentTest extends TestCase
      */
     private $key = 'myAPIkey';
 
+
     /**
      * Tracking number.
      *
@@ -48,10 +52,12 @@ final class TrackingDocumentTest extends TestCase
      */
     private $trackNum = '01234567890123';
 
+
     /**
      * Method ID.
      */
     const METHOD_ID = 'TrackingDocument';
+
 
     public function setUp()
     {
@@ -61,23 +67,39 @@ final class TrackingDocumentTest extends TestCase
         $this->track = new TrackingDocument($this->settings);
     }
 
+
     public function testModelInstance()
     {
         $this->assertInstanceOf(
           Model::class,
           $this->track
         );
+
+        $this->assertInstanceOf(
+          TrackingDocumentsInterface::class,
+          $this->track
+        );
     }
+
 
     public function testTrackingDocumentModel()
     {
         $this->assertEquals($this->track->getModelName(), self::METHOD_ID);
     }
 
+
     public function testTrackingDocumentTrackNum()
     {
         $this->track->setTrackList($this->trackNum);
 
         $this->assertEquals($this->track->getTrackList(), $this->trackNum);
+    }
+
+
+    public function testTrackingTrack()
+    {
+        $track = TrackingDocument::track($this->settings, $this->trackNum);
+
+        $this->assertInstanceOf(\stdClass::class, $track);
     }
 }

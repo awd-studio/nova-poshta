@@ -21,15 +21,18 @@ use NovaPoshta\Settings\Settings;
  *
  * @package NovaPoshta\Models
  */
-class TrackingDocument extends Model
+class TrackingDocument extends Model implements TrackingDocumentsInterface
 {
 
     /**
      * Valid tracking number.
      *
+     * @see \NovaPoshta\Entities\TrackList::__construct
+     *
      * @var TrackList
      */
     protected $trackList;
+
 
     /**
      * Model name Id.
@@ -41,41 +44,6 @@ class TrackingDocument extends Model
         return 'TrackingDocument';
     }
 
-    /**
-     * @return TrackList
-     */
-    public function getTrackList()
-    {
-        return $this->trackList;
-    }
-
-    /**
-     * @param mixed $trackList
-     */
-    public function setTrackList($trackList)
-    {
-        $this->trackList = $trackList;
-    }
-
-    /**
-     * Track package.
-     *
-     * @param Settings $settings
-     * @param mixed    $trackNumbers
-     *
-     * @return string
-     */
-    public static function track(Settings $settings, $trackNumbers)
-    {
-        $model = new self($settings);
-        $model->setCalledMethod('getStatusDocuments');
-
-        $trackList = new TrackList($trackNumbers);
-
-        $model->setTrackList($trackList);
-
-        return $model->send();
-    }
 
     /**
      * Build data for methodProperties item.
@@ -87,5 +55,62 @@ class TrackingDocument extends Model
         return [
           'Documents' => $this->trackList->getAll(),
         ];
+    }
+
+
+    /**
+     * @return TrackList
+     */
+    public function getTrackList()
+    {
+        return $this->trackList;
+    }
+
+
+    /**
+     * @param mixed $trackList
+     *
+     * @see \NovaPoshta\Entities\TrackList::__construct()
+     */
+    public function setTrackList($trackList)
+    {
+        $this->trackList = $trackList;
+    }
+
+
+    /**
+     * Track package.
+     *
+     * @param Settings $settings
+     * @param mixed    $trackList
+     *
+     * @see \NovaPoshta\Entities\TrackList::__construct
+     *
+     * @return string
+     */
+    public static function track(Settings $settings, $trackList)
+    {
+        $model = new self($settings);
+        $response = $model->getStatusDocuments(new TrackList($trackList));
+
+        return $response->getResponse();
+    }
+
+
+    /**
+     * Track documents status.
+     *
+     * @param TrackList $trackList Available track-list.
+     *
+     * @see \NovaPoshta\Entities\TrackList::__construct
+     *
+     * @return \NovaPoshta\Http\Response
+     */
+    public function getStatusDocuments(TrackList $trackList)
+    {
+        $this->calledMethod = 'getStatusDocuments';
+        $this->setTrackList($trackList);
+
+        return $this->send();
     }
 }
