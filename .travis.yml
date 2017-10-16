@@ -18,6 +18,10 @@ before_script:
 script: vendor/bin/phpunit
 
 matrix:
+  allow_failures:
+    - rust: nightly
+    - rust: hhvm
+    - rust: hhvm-nightly
   fast_finish: true
 
 notifications:

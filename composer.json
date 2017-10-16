@@ -25,11 +25,13 @@
     "authors": [
         {
             "name": "Anton Karpov",
-            "email": "awd.com.ua@gmail.com"
+            "email": "awd.com.ua@gmail.com",
+            "role": "Developer"
         }
     ],
     "support": {
-        "issues": "https://github.com/awd-studio/nova-poshta/issues"
+        "issues": "https://github.com/awd-studio/nova-poshta/issues",
+        "source": "https://github.com/awd-studio/nova-poshta"
     },
     "minimum-stability": "dev",
     "autoload": {
