@@ -1,6 +1,6 @@
 {
     "name": "awd-studio/nova-poshta",
-    "description": "Integrate with Nova Poshta post company API",
+    "description": "PHP SDK for Nova Poshta API",
     "keywords": [
         "delivery",
         "delivery-api",
@@ -10,13 +10,14 @@
         "poshta",
         "post",
         "postservices",
+        "sdk",
         "ukraine",
         "wrapper-api"
     ],
     "homepage": "https://github.com/awd-studio/nova-poshta",
     "type": "library",
     "require": {
-        "php": ">=5.5.9"
+        "php": ">=5.5 | 7"
     },
     "require-dev": {
         "phpunit/phpunit": "~5.7"

@@ -5,10 +5,11 @@
 [![License](https://poser.pugx.org/awd-studio/nova-poshta/license)](https://github.com/awd-studio/nova-poshta/blob/master/LICENSE)
 
 
-# Nova Poshta PHP library (alpha)
-## Integrate your PHP-app with [Nova Poshta](https://novaposhta.ua) post company API
+# PHP SDK for Nova Poshta API (alpha)
+## Integrate your PHP apps with [Nova Poshta](https://novaposhta.ua) post company API
 
-This library can integrates with Nova Poshta API.
+This open-source library allows you to integrate Nova Poshta API into your apps.
+
 
 ### About Nova Poshta company:
 
@@ -39,7 +40,7 @@ Nova Poshta puts into your service:
 - ~~Contingency (TTN) management~~ *(future)*
 
 ## Requirements
-- PHP v5.5.9 or higher *(PHP 7+ is recommended)*
+- PHP v5.5 or higher *(PHP 7+ is recommended)*
 - [Composer](https://getcomposer.org) package manager
 - An [API token](https://devcenter.novaposhta.ua/blog/%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-api-%D0%BA%D0%BB%D1%8E%D1%87%D0%B0)
 - [Guzzle](https://github.com/guzzle/guzzle) or [PHP_CURL](http://php.net/manual/book.curl.php) libraries for sending HTTP-requests *(optional - you can define yourself HTTP-driver)*
