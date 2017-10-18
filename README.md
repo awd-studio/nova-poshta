@@ -46,7 +46,7 @@ Nova Poshta puts into your service:
 - [Guzzle](https://github.com/guzzle/guzzle) or [PHP_CURL](http://php.net/manual/book.curl.php) libraries for sending HTTP-requests *(optional - you can define yourself HTTP-driver)*
 
 ## Install
-```sh
+```bash
 composer require awd-studio/nova-poshta
 ```
 
