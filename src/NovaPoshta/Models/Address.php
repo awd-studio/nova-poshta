@@ -18,6 +18,8 @@ use NovaPoshta\Settings\Settings;
  * Class Address
  *
  * @package NovaPoshta\Models
+ *
+ * @see     https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43
  */
 class Address extends Model implements AddressInterface
 {
