@@ -18,45 +18,75 @@ use PHPUnit\Framework\TestCase;
 final class TrackTest extends TestCase
 {
 
-    private $trackNum = '01234567890123';
+    private static $trackNumStatic = '01234567890123';
 
-    private $phone = '380000001122';
+    private static $phoneStatic = '380000001122';
 
-    public function testTrackAddString()
+    /** @var Track */
+    private $track;
+
+    /** @var Track */
+    private $trackWithPhone;
+
+
+    /**
+     * Data provider for test methods below
+     */
+    public static function trackProvider()
     {
-        $track = new Track($this->trackNum);
-
-        $this->assertEquals($track->getId(), $this->trackNum);
+        return [
+          [self::$trackNumStatic],
+          [[self::$trackNumStatic]],
+          [['DocumentNumber' => self::$trackNumStatic]],
+        ];
     }
 
-    public function testTrackAddArray()
-    {
-        $track = new Track([$this->trackNum]);
 
-        $this->assertEquals($track->getId(), $this->trackNum);
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $this->track          = new Track(self::$trackNumStatic);
+        $this->trackWithPhone = new Track(
+          self::$trackNumStatic,
+          self::$phoneStatic
+        );
     }
 
-    public function testTrackAddAssoc()
-    {
-        $track = new Track(['DocumentNumber' => $this->trackNum]);
 
-        $this->assertEquals($track->getId(), $this->trackNum);
+    /**
+     * @dataProvider trackProvider
+     *
+     * @param string|array $currentTrack
+     */
+    public function testTrack($currentTrack)
+    {
+        $track = new Track($currentTrack);
+
+        $this->assertEquals($track->getId(), self::$trackNumStatic);
     }
+
 
     public function testTrackGetPhone()
     {
-        $track = new Track($this->trackNum, $this->phone);
+        $track = $this->trackWithPhone;
 
-        $this->assertEquals($track->getPhone(), $this->phone);
+        $this->assertEquals($track->getPhone(), self::$phoneStatic);
     }
 
-    public function testTrackBuild()
-    {
-        $track    = new Track($this->trackNum, $this->phone);
 
-        $this->assertEquals($track->build(), [
-          'DocumentNumber' => $this->trackNum,
-          'Phone'          => $this->phone,
-        ]);
+    public function testTrackBuildHasTrack()
+    {
+        $track = $this->trackWithPhone;
+
+        $this->assertArrayHasKey('DocumentNumber', $track->build());
+    }
+
+
+    public function testTrackBuildHasPhone()
+    {
+        $track = $this->trackWithPhone;
+
+        $this->assertArrayHasKey('Phone', $track->build());
     }
 }

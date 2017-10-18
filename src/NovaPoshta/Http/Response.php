@@ -38,6 +38,7 @@ class Response
      */
     protected $response;
 
+
     /**
      * Response constructor.
      *
@@ -56,6 +57,7 @@ class Response
         }
     }
 
+
     /**
      * Decode JSON response.
      *
@@ -70,6 +72,7 @@ class Response
             throw new NpException('Incorrect response!');
         }
     }
+
 
     /**
      * Get completed response.
@@ -87,6 +90,7 @@ class Response
         return $this->response;
     }
 
+
     /**
      * Get raw response.
      *
@@ -96,6 +100,7 @@ class Response
     {
         return $this->rawResponse;
     }
+
 
     /**
      * Build response static.

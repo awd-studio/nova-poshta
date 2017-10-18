@@ -12,10 +12,12 @@
 namespace NovaPoshta\Tests\Models;
 
 
+use NovaPoshta\Entities\TrackList;
+use NovaPoshta\Http\Response;
 use NovaPoshta\Models\Model;
 use NovaPoshta\Models\TrackingDocumentsInterface;
-use NovaPoshta\Settings\Settings;
 use NovaPoshta\Models\TrackingDocument;
+use NovaPoshta\Settings\Settings;
 use PHPUnit\Framework\TestCase;
 
 final class TrackingDocumentTest extends TestCase
@@ -32,9 +34,9 @@ final class TrackingDocumentTest extends TestCase
     /**
      * Model instance.
      *
-     * @var TrackingDocument $trackingDocument
+     * @var TrackingDocument $model
      */
-    private $trackingDocument;
+    private $model;
 
 
     /**
@@ -54,6 +56,26 @@ final class TrackingDocumentTest extends TestCase
 
 
     /**
+     * JSON.
+     *
+     * @var string
+     */
+    private $json;
+
+
+    /**
+     * @var Response
+     */
+    private $response;
+
+
+    /**
+     * @var TrackingDocument|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $mock;
+
+
+    /**
      * Method ID.
      */
     const METHOD_ID = 'TrackingDocument';
@@ -63,43 +85,68 @@ final class TrackingDocumentTest extends TestCase
     {
         parent::setUp();
 
-        $this->settings         = Settings::getInstance()->auth($this->key);
-        $this->trackingDocument = new TrackingDocument($this->settings);
+        $this->settings = Settings::getInstance()->auth($this->key);
+        $this->model    = new TrackingDocument($this->settings);
+        $this->json     = json_encode([
+          'success' => 'true',
+          'data'    => [
+            'param1' => 'val1',
+            'param2' => 'val2',
+          ],
+        ]);
+        $this->response = new Response($this->json);
+        $this->mock     = $this->getMockBuilder(TrackingDocument::class)
+                               ->setConstructorArgs([$this->settings])
+                               ->setMethods(['getStatusDocuments'])
+                               ->getMock();
     }
 
 
-    public function testTrackingDocumentInstance()
+    public function testTrackingDocumentInstanceClass()
     {
         $this->assertInstanceOf(
           Model::class,
-          $this->trackingDocument
-        );
-
-        $this->assertInstanceOf(
-          TrackingDocumentsInterface::class,
-          $this->trackingDocument
+          $this->model
         );
     }
 
 
-    public function testTrackingDocumentModel()
+    public function testTrackingDocumentInstanceInterface()
     {
-        $this->assertEquals($this->trackingDocument->getModelName(), self::METHOD_ID);
+        $this->assertInstanceOf(
+          TrackingDocumentsInterface::class,
+          $this->model
+        );
+    }
+
+
+    public function testGetModelId()
+    {
+        $this->assertEquals(self::METHOD_ID, $this->model->getModelId());
     }
 
 
     public function testTrackingDocumentTrackNum()
     {
-        $this->trackingDocument->setTrackList($this->trackNum);
+        $this->model->setTrackList($this->trackNum);
 
-        $this->assertEquals($this->trackingDocument->getTrackList(), $this->trackNum);
+        $this->assertEquals($this->model->getTrackList(),
+          $this->trackNum);
     }
 
 
-    public function testTrackingDocumentTrack()
+    public function testTrackingDocumentGetStatusDocuments()
     {
-        $track = TrackingDocument::track($this->settings, $this->trackNum);
+        $trackList = new TrackList($this->trackNum);
 
-        $this->assertInstanceOf(\stdClass::class, $track);
+        $this->mock->expects($this->atLeastOnce())
+                   ->method('getStatusDocuments')
+                   ->willReturn($this->response);
+
+        $response = $this->mock->getStatusDocuments($trackList);
+
+        $this->assertInstanceOf(Response::class, $response);
+
+        $this->assertArrayHasKey('success', $response->getResponse(true));
     }
 }

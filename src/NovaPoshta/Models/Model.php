@@ -99,7 +99,7 @@ abstract class Model
      *
      * @return \NovaPoshta\Http\Response
      *
-     * @throws NpException
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function send()
     {

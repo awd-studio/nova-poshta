@@ -46,15 +46,6 @@ class TrackingDocument extends Model implements TrackingDocumentsInterface
 
 
     /**
-     * @return TrackList
-     */
-    public function getTrackList()
-    {
-        return $this->trackList;
-    }
-
-
-    /**
      * @param mixed $trackList
      *
      * @see \NovaPoshta\Entities\TrackList::__construct()
@@ -66,21 +57,11 @@ class TrackingDocument extends Model implements TrackingDocumentsInterface
 
 
     /**
-     * Track package.
-     *
-     * @param Settings $settings
-     * @param mixed    $trackList
-     *
-     * @see \NovaPoshta\Entities\TrackList::__construct
-     *
-     * @return array|string
+     * @return TrackList
      */
-    public static function track(Settings $settings, $trackList)
+    public function getTrackList()
     {
-        $model = new self($settings);
-        $response = $model->getStatusDocuments(new TrackList($trackList));
-
-        return $response->getResponse();
+        return $this->trackList;
     }
 
 
@@ -103,5 +84,24 @@ class TrackingDocument extends Model implements TrackingDocumentsInterface
         ]);
 
         return $this->send();
+    }
+
+
+    /**
+     * Track package.
+     *
+     * @param Settings $settings
+     * @param mixed    $trackList
+     *
+     * @see \NovaPoshta\Entities\TrackList::__construct
+     *
+     * @return array|string
+     */
+    public static function track(Settings $settings, $trackList)
+    {
+        $model    = new self($settings);
+        $response = $model->getStatusDocuments(new TrackList($trackList));
+
+        return $response->getResponse();
     }
 }

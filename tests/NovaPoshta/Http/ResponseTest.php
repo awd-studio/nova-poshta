@@ -51,33 +51,48 @@ final class ResponseTest extends TestCase
      */
     protected $responseData;
 
+
     public function setUp()
     {
         parent::setUp();
 
-        $this->rawResponse = json_encode($this->data);
-
+        $this->rawResponse  = json_encode($this->data);
         $this->response     = new Response($this->rawResponse);
         $this->responseData = $this->response->getResponse(true);
     }
 
-    public function testResponseGetResponse()
+
+    public function testResponseDataType()
     {
         $this->assertTrue(is_array($this->responseData));
+    }
+
+
+    public function testResponseGetResponse()
+    {
         $this->assertArrayHasKey('param1', $this->responseData);
         $this->assertArrayHasKey('param2', $this->responseData);
     }
 
-    public function testResponseGetRawResponse()
+
+    public function testResponseGetRawResponseIsJson()
     {
         $this->assertJson($this->rawResponse);
+    }
 
+
+    public function testResponseGetRawResponse()
+    {
         $this->assertJsonStringEqualsJsonString(
           json_encode($this->data),
           $this->rawResponse
         );
     }
 
+
+    /**
+     * @covers Response::build
+     */
     public function testResponseBuild()
     {
         $response = Response::build($this->rawResponse);

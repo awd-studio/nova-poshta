@@ -40,9 +40,9 @@ final class AddressTest extends TestCase
     /**
      * Model instance.
      *
-     * @var Address $address
+     * @var Address $model
      */
-    private $address;
+    private $model;
 
 
     /**
@@ -56,27 +56,31 @@ final class AddressTest extends TestCase
         parent::setUp();
 
         $this->settings = Settings::getInstance()->auth($this->key);
-        $this->address  = new Address($this->settings);
+        $this->model    = new Address($this->settings);
     }
 
 
-    public function testAddressInstance()
+    public function testAddressInstanceClass()
     {
         $this->assertInstanceOf(
           Model::class,
-          $this->address
-        );
-
-        $this->assertInstanceOf(
-          AddressInterface::class,
-          $this->address
+          $this->model
         );
     }
 
 
-    public function testAddressModel()
+    public function testAddressInstanceInterface()
     {
-        $this->assertEquals($this->address->getModelId(), self::METHOD_ID);
+        $this->assertInstanceOf(
+          AddressInterface::class,
+          $this->model
+        );
+    }
+
+
+    public function testGetModelId()
+    {
+        $this->assertEquals(self::METHOD_ID, $this->model->getModelId());
     }
 
 

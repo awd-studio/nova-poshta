@@ -13,6 +13,7 @@ namespace NovaPoshta\Entities;
 
 
 use Iterator;
+use NovaPoshta\Exceptions\NpException;
 
 
 /**
@@ -31,6 +32,7 @@ class TrackList implements Iterator
      * @var array
      */
     private $container = array();
+
 
     /**
      * TrackList constructor.
@@ -73,9 +75,10 @@ class TrackList implements Iterator
                 $this->container[$track->getId()] = $track->build();
             }
         } else {
-            throw new \NovaPoshta\Exceptions\NpException('Invalid track numbers!');
+            throw new NpException('Invalid track numbers!');
         }
     }
+
 
     /**
      * Get all tracks in list container.
@@ -86,6 +89,7 @@ class TrackList implements Iterator
     {
         return array_values($this->container);
     }
+
 
     /**
      * Get track from list
@@ -103,6 +107,7 @@ class TrackList implements Iterator
           null;
     }
 
+
     /**
      * @param mixed  $documentNumber
      * @param string $phone
@@ -113,6 +118,7 @@ class TrackList implements Iterator
 
         $this->container[$track->getId()] = $track->build();
     }
+
 
     /**
      * Return the current element
@@ -126,6 +132,7 @@ class TrackList implements Iterator
         return $this->container[$this->position];
     }
 
+
     /**
      * Move forward to next element
      *
@@ -137,6 +144,7 @@ class TrackList implements Iterator
     {
         ++$this->position;
     }
+
 
     /**
      * Return the key of the current element
@@ -150,6 +158,7 @@ class TrackList implements Iterator
         return $this->position;
     }
 
+
     /**
      * Checks if current position is valid
      *
@@ -162,6 +171,7 @@ class TrackList implements Iterator
     {
         return isset($this->container[$this->position]);
     }
+
 
     /**
      * Rewind the Iterator to the first element

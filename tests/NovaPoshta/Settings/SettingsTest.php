@@ -12,6 +12,8 @@
 namespace NovaPoshta\Tests\Settings;
 
 
+use NovaPoshta\Exceptions\NpException;
+use NovaPoshta\Http\CurlHttp;
 use NovaPoshta\Http\HttpInterface;
 use NovaPoshta\Settings\Settings;
 use PHPUnit\Framework\TestCase;
@@ -33,6 +35,7 @@ final class SettingsTest extends TestCase
      */
     private $key = 'myAPIkey';
 
+
     public function setUp()
     {
         parent::setUp();
@@ -40,7 +43,8 @@ final class SettingsTest extends TestCase
         $this->settings = Settings::getInstance()->auth($this->key);
     }
 
-    public function testSettingsInstance()
+
+    public function testSettingsSettingsInstance()
     {
         $this->assertInstanceOf(
           Settings::class,
@@ -48,20 +52,40 @@ final class SettingsTest extends TestCase
         );
     }
 
-    public function testValidationKey()
+
+    public function testSettingsValidationKey()
     {
         $this->assertTrue($this->settings->isValid(), 'Validation filled key');
+    }
 
+
+    public function testSettingsValidationSetApiKey()
+    {
         $this->settings->setApiKey('');
         $this->assertFalse($this->settings->isValid(), 'Validation empty key');
     }
 
-    public function testKey()
+
+    public function testSettingsKey()
     {
         $this->assertEquals($this->settings->getApiKey(), $this->key);
     }
 
-    public function testDriver()
+
+    public function testSettingsDriver()
+    {
+        $driver = new CurlHttp();
+
+        $settings = Settings::getInstance()->auth($this->key, $driver);
+
+        $this->assertInstanceOf(
+          HttpInterface::class,
+          $settings->getDriver()
+        );
+    }
+
+
+    public function testSettingsDefaultDriver()
     {
         $this->assertInstanceOf(
           HttpInterface::class,
@@ -69,9 +93,19 @@ final class SettingsTest extends TestCase
         );
     }
 
-    public function testApiHostIsUrl()
+
+    public function testSettingsAuthException()
+    {
+        $this->expectException(NpException::class);
+
+        $this->settings->auth('');
+    }
+
+
+    public function testSettingsApiHostIsUrl()
     {
         $apiHost = Settings::getApiHost();
+
         $this->assertRegExp(
           '/^https:\/\/?[\da-z\.-]+\.[a-z\.]{2,6}[\/\w \.-]*\/json\/$/',
           $apiHost
