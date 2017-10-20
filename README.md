@@ -35,6 +35,7 @@ Nova Poshta puts into your service:
 ## Features
 - Track packages
 - Getting branch-offices
+- Getting common dictionaries
 - ~~Counting delivery cost~~ *(future)*
 - ~~Determine the date of delivery~~ *(future)*
 - ~~Contingency (TTN) management~~ *(future)*
@@ -106,3 +107,26 @@ $options = [
 
 $address = Address::getBranches($settings, $options);
 ```
+
+**Common dictionaries:**
+```php
+<?php
+
+use NovaPoshta\Settings\Settings;
+use NovaPoshta\Models\Common;
+
+$key      = 'myAuthKeyHash';
+$settings = Settings::getInstance()->auth($key);
+
+$recipientCityRef = '8d5a980d-391c-11dd-90d9-001a92567626';
+
+$common   = new Common($settings);
+$response = $common->getCargoTypes();
+// Or
+$response = $common->getPalletsList();
+// Or
+$response = $common->getMessageCodeText();
+// Or
+$response = $common->getTimeIntervals($recipientCityRef);
+```
+[See details.](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed) All methods implements.

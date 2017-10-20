@@ -187,6 +187,24 @@ abstract class Model
 
 
     /**
+     * Set method property.
+     *
+     * @see https://devcenter.novaposhta.ua/docs/services/
+     *
+     * @param string $propertyName
+     * @param string $propertyValue
+     *
+     * @return \NovaPoshta\Models\Model
+     */
+    public function setMethodProperty($propertyName, $propertyValue)
+    {
+        $this->methodProperties[$propertyName] = $propertyValue;
+
+        return $this;
+    }
+
+
+    /**
      * Model name Id.
      *
      * @return string

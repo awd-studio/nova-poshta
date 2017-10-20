@@ -12,7 +12,6 @@
 namespace NovaPoshta\Models;
 
 
-use NovaPoshta\Http\Response;
 
 /**
  * Interface AddressInterface
