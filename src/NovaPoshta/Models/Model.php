@@ -70,31 +70,6 @@ abstract class Model
 
 
     /**
-     * Build request data.
-     *
-     * @return string
-     * @throws \NovaPoshta\Exceptions\NpException
-     */
-    public function buildData()
-    {
-        $build = [
-          'apiKey'           => $this->settings->getApiKey(),
-          'modelName'        => $this->getModelName(),
-          'calledMethod'     => $this->getCalledMethod(),
-          'methodProperties' => $this->getMethodProperties(),
-        ];
-
-        foreach ($build as $key => $item) {
-            if (empty($item) && $key != 'methodProperties') {
-                throw new NpException("Data \"$key\" not allowed!");
-            }
-        }
-
-        return json_encode($build);
-    }
-
-
-    /**
      * Execute Driver.
      *
      * @return \NovaPoshta\Http\Response
@@ -122,10 +97,13 @@ abstract class Model
      * @param string $model Current model name.
      *
      * @see https://devcenter.novaposhta.ua/docs/services/
+     * @return $this
      */
     private function setModelName($model)
     {
         $this->modelName = $model;
+
+        return $this;
     }
 
 
@@ -135,16 +113,10 @@ abstract class Model
      * @return string Name of model method.
      *
      * @see https://devcenter.novaposhta.ua/docs/services/
-     *
-     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getCalledMethod()
     {
-        if (!empty($this->calledMethod)) {
-            return $this->calledMethod;
-        } else {
-            throw new NpException('Called method is not allowed!');
-        }
+        return $this->calledMethod;
     }
 
 
@@ -154,10 +126,13 @@ abstract class Model
      * @param string $calledMethod available method for current model.
      *
      * @see https://devcenter.novaposhta.ua/docs/services/
+     * @return $this
      */
     public function setCalledMethod($calledMethod)
     {
         $this->calledMethod = $calledMethod;
+
+        return $this;
     }
 
 
@@ -200,10 +175,14 @@ abstract class Model
      * @see https://devcenter.novaposhta.ua/docs/services/
      *
      * @param array $methodProperties
+     *
+     * @return $this
      */
-    public function setMethodProperties($methodProperties)
+    public function setMethodProperties(array $methodProperties)
     {
         $this->methodProperties = $methodProperties;
+
+        return $this;
     }
 
 

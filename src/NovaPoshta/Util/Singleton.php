@@ -9,13 +9,13 @@
  * @link     https://github.com/awd-studio/nova-poshta
  */
 
-namespace NovaPoshta\Settings;
+namespace NovaPoshta\Util;
 
 
 /**
- * Trait for Settings.
+ * Singleton Trait.
  */
-trait SettingsTrait
+trait Singleton
 {
 
     /**
@@ -23,21 +23,33 @@ trait SettingsTrait
      */
     private static $instance;
 
+
     /**
      * Avoid many instances of Settings.
      */
-    private final function __construct() {}
-    private final function __clone() {}
-    private final function __wakeup() {}
+    private final function __construct()
+    {
+    }
+
+
+    private final function __clone()
+    {
+    }
+
+
+    private final function __wakeup()
+    {
+    }
+
 
     /**
-     * Get SettingsTrait instance.
+     * Get Singleton instance.
      *
      * @return self
      */
     public final static function getInstance()
     {
-        if(!self::$instance) {
+        if (!self::$instance) {
             self::$instance = new self;
         }
 

@@ -12,6 +12,7 @@
 namespace NovaPoshta\Http;
 
 
+use NovaPoshta\DataBuilders\RequestData;
 use NovaPoshta\Exceptions\NpException;
 use NovaPoshta\Models\Model;
 
@@ -37,9 +38,11 @@ class CurlHttp implements HttpInterface
         static $chanel = 0; // keepalive
 
         $response = null;
+
         $settings = $model->getSettings();
-        $post     = $model->buildData();
         $uri      = $settings::getApiHost();
+
+        $body = RequestData::getInstance()->build($model);
 
         if (!$chanel) {
             $curl = curl_init();
@@ -49,7 +52,7 @@ class CurlHttp implements HttpInterface
               CURLOPT_RETURNTRANSFER => true,
               CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
               CURLOPT_CUSTOMREQUEST  => "POST",
-              CURLOPT_POSTFIELDS     => $post,
+              CURLOPT_POSTFIELDS     => $body,
               CURLOPT_HTTPHEADER     => array("content-type: application/json",),
             ));
 

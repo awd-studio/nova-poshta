@@ -12,6 +12,7 @@
 namespace NovaPoshta\Http;
 
 
+use NovaPoshta\DataBuilders\RequestData;
 use NovaPoshta\Exceptions\NpException;
 use NovaPoshta\Models\Model;
 use GuzzleHttp\Client;
@@ -37,18 +38,17 @@ class GuzzleHttp implements HttpInterface
     public function send(Model $model)
     {
         $response = null;
+
         $settings = $model->getSettings();
-        $body     = $model->buildData();
         $uri      = $settings::getApiHost();
+
+        $body = RequestData::getInstance()->build($model, false);
 
         try {
             $client = new Client();
 
             $response = $client->post($uri, [
-              'headers' => [
-                'Content-Type' => 'application/json',
-              ],
-              'body'    => $body,
+              'json' => $body,
             ]);
 
             return (string) $response->getBody();

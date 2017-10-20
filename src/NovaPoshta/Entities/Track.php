@@ -34,6 +34,7 @@ class Track
      */
     protected $phone;
 
+
     /**
      * Track constructor.
      *
@@ -65,6 +66,7 @@ class Track
         }
     }
 
+
     /**
      * Get Track ID.
      *
@@ -75,6 +77,7 @@ class Track
         return $this->documentNumber;
     }
 
+
     /**
      * @param string $phone
      */
@@ -83,6 +86,7 @@ class Track
         $this->phone = $phone;
     }
 
+
     /**
      * @return string
      */
@@ -90,6 +94,7 @@ class Track
     {
         return $this->phone;
     }
+
 
     /**
      * Build track.
@@ -103,6 +108,7 @@ class Track
           'Phone'          => $this->phone,
         ];
     }
+
 
     /**
      * Create static Track number.

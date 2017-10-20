@@ -12,6 +12,7 @@
 namespace NovaPoshta\Settings;
 
 
+use NovaPoshta\Util\Singleton;
 use NovaPoshta\Exceptions\NpException;
 use NovaPoshta\Http\CurlHttp;
 use NovaPoshta\Http\GuzzleHttp;
@@ -28,7 +29,7 @@ use NovaPoshta\Http\HttpInterface;
 class Settings
 {
 
-    use SettingsTrait;
+    use Singleton;
 
     /**
      * API endpoint.
@@ -54,12 +55,6 @@ class Settings
      */
     private $valid = false;
 
-    /**
-     * Testing mode.
-     *
-     * @var bool
-     */
-    private $testMode = false;
 
     /**
      * Check if settings is valid.
@@ -71,6 +66,7 @@ class Settings
         return $this->valid = !empty($this->apiKey) && $this->driver !== null;
     }
 
+
     /**
      * @return string
      */
@@ -78,6 +74,7 @@ class Settings
     {
         return $this->apiKey;
     }
+
 
     /**
      * @param string $apiKey
@@ -87,6 +84,7 @@ class Settings
         $this->apiKey = $apiKey;
     }
 
+
     /**
      * @return HttpInterface
      */
@@ -94,6 +92,7 @@ class Settings
     {
         return $this->driver;
     }
+
 
     /**
      * @param HttpInterface|null $driver
@@ -107,21 +106,6 @@ class Settings
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function getTestMode()
-    {
-        return $this->testMode;
-    }
-
-    /**
-     * @param bool $testMode
-     */
-    public function setTestMode($testMode = true)
-    {
-        $this->testMode = $testMode;
-    }
 
     /**
      * Get default HTTP driver.
@@ -143,6 +127,7 @@ class Settings
         return $driver;
     }
 
+
     /**
      * Get API Host.
      *
@@ -152,6 +137,7 @@ class Settings
     {
         return mb_strtolower(self::NOVA_POSHTA_API_HOST);
     }
+
 
     /**
      * Authorize settings.
