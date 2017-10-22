@@ -17,11 +17,11 @@
     "homepage": "https://github.com/awd-studio/nova-poshta",
     "type": "library",
     "require": {
-        "php": ">=5.5 | 7"
+        "php": ">=5.5 | 7",
+        "ext-json": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "~5.7",
-        "ext-json": "*"
+        "phpunit/phpunit": "~5.7"
     },
     "license": "MIT",
     "authors": [
