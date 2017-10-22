@@ -16,10 +16,7 @@ before_script:
   - composer install --prefer-source --no-interaction --dev
 
 script:
-  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-
-after_script:
-  - php vendor/bin/coveralls -v
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
 
 matrix:
   allow_failures:
@@ -31,3 +28,6 @@ matrix:
 notifications:
     on_success: never
     on_failure: always
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
