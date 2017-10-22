@@ -15,9 +15,9 @@ namespace NovaPoshta\Models;
 /**
  * Interface ContactPerson
  *
- * @package NovaPoshta\Models
+ * @package  NovaPoshta\Models
  *
- * @see     https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e
+ * @link     https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e
  */
 interface ScanSheetInterface
 {
@@ -29,7 +29,7 @@ interface ScanSheetInterface
      *
      * @param DocumentRefs $documentRefs
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c4786a0fe4f0634657b65
+     * @link https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c4786a0fe4f0634657b65
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -44,7 +44,7 @@ interface ScanSheetInterface
      * @param Ref             $ref
      * @param CounterpartyRef $counterpartyRef
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c72d7a0fe4f08e8f7ce30
+     * @link https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c72d7a0fe4f08e8f7ce30
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -56,7 +56,7 @@ interface ScanSheetInterface
      *
      * ToDo: Implement the method
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c7734a0fe4f08e8f7ce31
+     * @link https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c7734a0fe4f08e8f7ce31
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -70,7 +70,7 @@ interface ScanSheetInterface
      *
      * @param ScanSheetRefs|array $scanSheetRefs
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6a2da0fe4f08e8f7ce2f
+     * @link https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6a2da0fe4f08e8f7ce2f
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -85,7 +85,7 @@ interface ScanSheetInterface
      * @param DocumentRefs|array $documentRefs
      * @param Ref                $ref
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6474a0fe4f08e8f7ce2e
+     * @link https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6474a0fe4f08e8f7ce2e
      *
      * @return \NovaPoshta\Http\Response
      */

@@ -100,7 +100,7 @@ abstract class ModelBase
      *
      * @param string $model Current model name.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/
+     * @link https://devcenter.novaposhta.ua/docs/services/
      * @return $this
      */
     private function setModelName($model)
@@ -116,7 +116,7 @@ abstract class ModelBase
      *
      * @return string Name of model method.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/
+     * @link https://devcenter.novaposhta.ua/docs/services/
      */
     public function getCalledMethod()
     {
@@ -129,7 +129,7 @@ abstract class ModelBase
      *
      * @param string $calledMethod available method for current model.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/
+     * @link https://devcenter.novaposhta.ua/docs/services/
      * @return $this
      */
     public function setCalledMethod($calledMethod)
@@ -176,7 +176,7 @@ abstract class ModelBase
     /**
      * Set method properties.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/
+     * @link https://devcenter.novaposhta.ua/docs/services/
      *
      * @param array $methodProperties
      *
@@ -193,7 +193,7 @@ abstract class ModelBase
     /**
      * Set method property.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/
+     * @link https://devcenter.novaposhta.ua/docs/services/
      *
      * @param string $property
      * @param string $value
@@ -205,6 +205,23 @@ abstract class ModelBase
         $this->methodProperties->set($property, $value);
 
         return $this;
+    }
+
+
+    /**
+     * Check required method properties.
+     *
+     * @param array $properties
+     *
+     * @throws \NovaPoshta\Exceptions\NpException
+     */
+    public function getRequiredProperties(array $properties)
+    {
+        foreach ($properties as $name => $value) {
+            if ($this->methodProperties->get($value) === null) {
+                throw new NpException("Property \"$value\" is required!");
+            }
+        }
     }
 
 

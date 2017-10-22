@@ -17,9 +17,9 @@ use NovaPoshta\Entities\TrackList;
 /**
  * Interface TrackingDocumentsInterface
  *
- * @package NovaPoshta\Models
+ * @package  NovaPoshta\Models
  *
- * @see     https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e
+ * @link     https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e
  */
 interface InternetDocumentInterface
 {

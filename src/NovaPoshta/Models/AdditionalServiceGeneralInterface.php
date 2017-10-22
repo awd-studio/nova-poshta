@@ -17,7 +17,7 @@ namespace NovaPoshta\Models;
  *
  * @package NovaPoshta\Models
  *
- * @see     https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1
+ * @link    https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1
  */
 interface AdditionalServiceGeneralInterface
 {
@@ -29,7 +29,7 @@ interface AdditionalServiceGeneralInterface
      *
      * @param string $orderType OrderType [max 36 chars]
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1/operations/58f72344ff2c200c04673bd3
+     * @link https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1/operations/58f72344ff2c200c04673bd3
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -44,7 +44,7 @@ interface AdditionalServiceGeneralInterface
      * @param string $ref       Ref [max 36 chars]
      * @param string $orderType OrderType - constant "orderRedirecting"
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1/operations/58f7237bff2c200c04673bd4
+     * @link https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1/operations/58f7237bff2c200c04673bd4
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -77,7 +77,7 @@ interface AdditionalServiceGeneralInterface
      * @param string $paymentMethod             PaymentMethod [max 36 chars]
      * @param string $note                      Note [max 36 chars]
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1/operations/58f7233eff2c200c04673bd2
+     * @link https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1/operations/58f7233eff2c200c04673bd2
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -96,7 +96,7 @@ interface AdditionalServiceGeneralInterface
      * @param string $page      (optional) Page [max 36 chars]
      * @param string $limit     (optional) Limit [max 36 chars]
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1/operations/58f72396ff2c200c04673bd5
+     * @link https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1/operations/58f72396ff2c200c04673bd5
      *
      * @return \NovaPoshta\Http\Response
      */

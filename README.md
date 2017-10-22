@@ -93,19 +93,70 @@ $settings = Settings::getInstance()->auth($key);
  * @see https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8211a0fe4f08e8f7ce45
  */
 $options = [
-  'BicycleParking'     => '1',
-  'TypeOfWarehouseRef' =>'9a68df70-0267-42a8-bb5c-37f427e36ee4',
-  'PostFinance'        => '1',
-  'CityName'           =>'Київ',
-  'CityRef'            => '20982d74-9b6c-11e2-a57a-d4ae527baec3',
+    'BicycleParking'     => '1',
+    'TypeOfWarehouseRef' =>'9a68df70-0267-42a8-bb5c-37f427e36ee4',
+    'PostFinance'        => '1',
+    'CityName'           =>'Київ',
+    'CityRef'            => '20982d74-9b6c-11e2-a57a-d4ae527baec3',
 ];
 
 // Or set city REF for quick searching:
 // $options = [
-//   'SettlementRef' => 'e71629ab-4b33-11e4-ab6d-005056801329'
+//     'SettlementRef' => 'e71629ab-4b33-11e4-ab6d-005056801329'
 // ];
 
 $address = Address::getBranches($settings, $options);
+```
+
+**Get addresses refs:**
+```php
+<?php
+
+use NovaPoshta\Settings\Settings;
+use NovaPoshta\Models\Address;
+
+$key      = 'myAuthKeyHash';
+$settings = Settings::getInstance()->auth($key);
+
+$address  = new Address($settings);
+
+$response = $address->getAreas(); // Areas
+
+$options = [
+    'CityRef' => 'ebc0eda9-93ec-11e3-b441-0050568002cf',
+];
+$response = $address->getStreet($options); // Streets
+
+$response = $address->getSettlements($options); // Settlements
+```
+
+**Online searching methods:**
+```php
+<?php
+
+use NovaPoshta\Settings\Settings;
+use NovaPoshta\Models\Address;
+
+$key      = 'myAuthKeyHash';
+$settings = Settings::getInstance()->auth($key);
+
+$address  = new Address($settings);
+
+// Just start typing, no needed save values to database!
+
+$options = [
+    'CityName' => 'К',
+    //'CityName' => 'Ки',
+    //'CityName' => 'Киї',
+];
+$response = $model->searchSettlements($options); // Get towns list
+
+$options = [
+    'StreetName'    => 'Шев',
+    'SettlementRef' => 'e715719e-4b33-11e4-ab6d-005056801329',
+    'Limit'         => 10,
+];
+$response = $model->searchSettlements($options); // Get streets
 ```
 
 **Common dictionaries:**
@@ -114,6 +165,7 @@ $address = Address::getBranches($settings, $options);
 
 use NovaPoshta\Settings\Settings;
 use NovaPoshta\Models\Common;
+use NovaPoshta\Models\Address;
 
 $key      = 'myAuthKeyHash';
 $settings = Settings::getInstance()->auth($key);
@@ -128,5 +180,9 @@ $response = $common->getPalletsList();
 $response = $common->getMessageCodeText();
 // Or
 $response = $common->getTimeIntervals($recipientCityRef);
+
+// Get warehouse types
+$address  = new Address($settings);
+$response = $model->getWarehouseTypes();
 ```
 [See details.](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed) All methods implements.

@@ -15,9 +15,9 @@ namespace NovaPoshta\Models;
 /**
  * Interface for Payment model.
  *
- * @package NovaPoshta\Models
+ * @package  NovaPoshta\Models
  *
- * @see     https://devcenter.novaposhta.ua/docs/services/59a42363ff2c201434937b23
+ * @link     https://devcenter.novaposhta.ua/docs/services/59a42363ff2c201434937b23
  */
 interface PaymentInterface
 {
@@ -25,7 +25,7 @@ interface PaymentInterface
     /**
      * Get cards.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/59a42363ff2c201434937b23/operations/59a42830eea27010d84d6651
+     * @link https://devcenter.novaposhta.ua/docs/services/59a42363ff2c201434937b23/operations/59a42830eea27010d84d6651
      *
      * @return \NovaPoshta\Http\Response
      */

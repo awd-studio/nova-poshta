@@ -15,9 +15,9 @@ namespace NovaPoshta\Models;
 /**
  * Interface ContactPerson
  *
- * @package NovaPoshta\Models
+ * @package  NovaPoshta\Models
  *
- * @see     https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55828c4ca0fe4f0adc08ef27
+ * @link     https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55828c4ca0fe4f0adc08ef27
  */
 interface ContactPersonInterface
 {
@@ -33,7 +33,7 @@ interface ContactPersonInterface
      * @param MiddleName      $middleName (optional)
      * @param Phone           $phone
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55828c4ca0fe4f0adc08ef27
+     * @link https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55828c4ca0fe4f0adc08ef27
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -51,7 +51,7 @@ interface ContactPersonInterface
      * @param MiddleName $middleName (optional)
      * @param Phone      $phone
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/558297aca0fe4f0adc08ef28
+     * @link https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/558297aca0fe4f0adc08ef28
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -65,7 +65,7 @@ interface ContactPersonInterface
      *
      * @param Ref $ref
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55829aa2a0fe4f0adc08ef29
+     * @link https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55829aa2a0fe4f0adc08ef29
      *
      * @return \NovaPoshta\Http\Response
      */

@@ -35,7 +35,7 @@ class Common extends ModelBase implements CommonInterface
     /**
      * Get cargo types.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -50,7 +50,7 @@ class Common extends ModelBase implements CommonInterface
     /**
      * Get backward delivery cargo types.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838907
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838907
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -65,7 +65,7 @@ class Common extends ModelBase implements CommonInterface
     /**
      * Get pallets list.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/5824774ba0fe4f0e60694eb0
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/5824774ba0fe4f0e60694eb0
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -80,7 +80,7 @@ class Common extends ModelBase implements CommonInterface
     /**
      * Get types of payers.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -95,7 +95,7 @@ class Common extends ModelBase implements CommonInterface
     /**
      * Get types of payers for redelivery.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838914
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838914
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -115,7 +115,7 @@ class Common extends ModelBase implements CommonInterface
      * @param string $height        (optional) Height
      * @param string $typeOfPacking (optional) TypeOfPacking
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/582b1069a0fe4f0298618f06
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/582b1069a0fe4f0298618f06
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -140,7 +140,7 @@ class Common extends ModelBase implements CommonInterface
     /**
      * Get tires wheels list.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838910
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838910
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -158,7 +158,7 @@ class Common extends ModelBase implements CommonInterface
      * @param  string $findByString (optional) FindByString
      * @param  int    $page         (optional) Page
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838908
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838908
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -177,7 +177,7 @@ class Common extends ModelBase implements CommonInterface
     /**
      * Get message code text.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/58f0730deea270153c8be3cd
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/58f0730deea270153c8be3cd
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -192,7 +192,7 @@ class Common extends ModelBase implements CommonInterface
     /**
      * Get service types.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890e
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890e
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -207,7 +207,7 @@ class Common extends ModelBase implements CommonInterface
     /**
      * Get types of counterparties.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838912
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838912
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -222,7 +222,7 @@ class Common extends ModelBase implements CommonInterface
     /**
      * Get payment forms.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890d
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890d
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -237,7 +237,7 @@ class Common extends ModelBase implements CommonInterface
     /**
      * Get ownership forms list.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890b
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890b
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -255,7 +255,7 @@ class Common extends ModelBase implements CommonInterface
      * @param string $recipientCityRef RecipientCityRef
      * @param string $dateTime         DateTime
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890f
+     * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890f
      *
      * @return \NovaPoshta\Http\Response
      */

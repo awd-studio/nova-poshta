@@ -12,6 +12,7 @@
 namespace NovaPoshta\Tests\Models;
 
 
+use NovaPoshta\Exceptions\NpException;
 use NovaPoshta\Models\Address;
 use NovaPoshta\Models\AddressInterface;
 use NovaPoshta\Models\ModelBase;
@@ -89,5 +90,14 @@ final class AddressTest extends TestCase
         $address = Address::getBranches($this->settings);
 
         $this->assertInstanceOf(\stdClass::class, $address);
+    }
+
+
+    public function testAddressGetRequiredPropertiesException()
+    {
+        $this->expectException(NpException::class);
+
+        $NewAddress = new Address($this->settings);
+        $NewAddress->searchSettlementStreets([]);
     }
 }

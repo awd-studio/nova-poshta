@@ -34,7 +34,7 @@ class Payment extends ModelBase implements PaymentInterface
     /**
      * Get cards.
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/59a42363ff2c201434937b23/operations/59a42830eea27010d84d6651
+     * @link https://devcenter.novaposhta.ua/docs/services/59a42363ff2c201434937b23/operations/59a42830eea27010d84d6651
      *
      * @return \NovaPoshta\Http\Response
      */

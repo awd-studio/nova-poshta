@@ -59,7 +59,8 @@ class RequestData implements RequestDataInterface
      * Build request data.
      *
      * @param \NovaPoshta\Models\ModelBase $model Filled ModelBase instance.
-     * @param bool                         $json  If checked JSON-encoded string.
+     * @param bool                         $json  If checked JSON-encoded
+     *                                            string.
      *
      * @return RequestDataInterface|string
      * @throws \NovaPoshta\Exceptions\NpException

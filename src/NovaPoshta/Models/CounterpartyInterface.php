@@ -15,9 +15,9 @@ namespace NovaPoshta\Models;
 /**
  * Interface AddressInterface
  *
- * @package NovaPoshta\Models
+ * @package  NovaPoshta\Models
  *
- * @see     https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d
+ * @link     https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d
  */
 interface CounterpartyInterface
 {
@@ -36,7 +36,7 @@ interface CounterpartyInterface
      * @param CounterpartyType     $counterpartyType
      * @param CounterpartyProperty $counterpartyProperty
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e
+     * @link https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -55,7 +55,7 @@ interface CounterpartyInterface
      * @param LastName   $lastName
      * @param Phone      $phone
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e
+     * @link https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -69,7 +69,7 @@ interface CounterpartyInterface
      *
      * @param Ref $ref
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd35da0fe4f105c08760e
+     * @link https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd35da0fe4f105c08760e
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -83,7 +83,7 @@ interface CounterpartyInterface
      *
      * @param Ref $ref
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fdcb4a0fe4f105c087611
+     * @link https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fdcb4a0fe4f105c087611
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -97,7 +97,7 @@ interface CounterpartyInterface
      *
      * @param Ref $ref
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55801976a0fe4f105c087614
+     * @link https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55801976a0fe4f105c087614
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -112,7 +112,7 @@ interface CounterpartyInterface
      * @param Ref  $ref
      * @param Page $page Page number
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fe424a0fe4f105c087612
+     * @link https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fe424a0fe4f105c087612
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -124,7 +124,7 @@ interface CounterpartyInterface
      *
      * ToDo: Implement the method
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd789a0fe4f105c08760f
+     * @link https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd789a0fe4f105c08760f
      *
      * @return \NovaPoshta\Http\Response
      */

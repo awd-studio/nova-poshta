@@ -15,9 +15,9 @@ namespace NovaPoshta\Models;
 /**
  * Interface for AdditionalService
  *
- * @package NovaPoshta\Models
+ * @package  NovaPoshta\Models
  *
- * @see     https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649
+ * @link     https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649
  */
 interface AdditionalServiceInterface
 {
@@ -35,7 +35,7 @@ interface AdditionalServiceInterface
      * @param string $orderType        OrderType [max 36 chars]
      * @param string $returnAddressRef ReturnAddressRef (Ref) [max 36 chars]
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6d227ff2c200cd80adb94
+     * @link https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6d227ff2c200cd80adb94
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -49,7 +49,7 @@ interface AdditionalServiceInterface
      *
      * @param string $ref Ref [max 36 chars]
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6cdf4ff2c200cd80adb93
+     * @link https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6cdf4ff2c200cd80adb93
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -63,7 +63,7 @@ interface AdditionalServiceInterface
      *
      * @param int $number Number of document [max 36 chars]
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6b830ff2c200cd80adb91
+     * @link https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6b830ff2c200cd80adb91
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -75,7 +75,7 @@ interface AdditionalServiceInterface
      *
      * ToDo: Implement the method
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6cd6aeea2700d141ccae1
+     * @link https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6cd6aeea2700d141ccae1
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -89,7 +89,7 @@ interface AdditionalServiceInterface
      *
      * @param string $reasonRef ReasonRef
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6cdb2ff2c200cd80adb92
+     * @link https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6cdb2ff2c200cd80adb92
      *
      * @return \NovaPoshta\Http\Response
      */
@@ -108,7 +108,7 @@ interface AdditionalServiceInterface
      * @param string $page      (optional) Page [max 36 chars]
      * @param string $limit     (optional) Limit [max 36 chars]
      *
-     * @see https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6cdc9eea2700d141ccae2
+     * @link https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6cdc9eea2700d141ccae2
      *
      * @return \NovaPoshta\Http\Response
      */
