@@ -14,7 +14,7 @@ namespace NovaPoshta\Tests\Models;
 
 use NovaPoshta\Entities\TrackList;
 use NovaPoshta\Http\Response;
-use NovaPoshta\Models\Model;
+use NovaPoshta\Models\ModelBase;
 use NovaPoshta\Models\TrackingDocumentsInterface;
 use NovaPoshta\Models\TrackingDocument;
 use NovaPoshta\Settings\Settings;
@@ -32,7 +32,7 @@ final class TrackingDocumentTest extends TestCase
 
 
     /**
-     * Model instance.
+     * ModelBase instance.
      *
      * @var TrackingDocument $model
      */
@@ -105,7 +105,7 @@ final class TrackingDocumentTest extends TestCase
     public function testTrackingDocumentInstanceClass()
     {
         $this->assertInstanceOf(
-          Model::class,
+          ModelBase::class,
           $this->model
         );
     }

@@ -12,17 +12,18 @@
 namespace NovaPoshta\Models;
 
 
+use NovaPoshta\DataBuilders\MethodProperties;
 use NovaPoshta\Exceptions\NpException;
 use NovaPoshta\Http\Response;
 use NovaPoshta\Settings\Settings;
 
 
 /**
- * Abstract class Model
+ * Abstract class ModelBase
  *
  * @package NovaPoshta\Models
  */
-abstract class Model
+abstract class ModelBase
 {
 
     /**
@@ -49,19 +50,22 @@ abstract class Model
     /**
      * Method properties data.
      *
-     * @var array
+     * @var \NovaPoshta\DataBuilders\DataInterface
      */
-    private $methodProperties = [];
+    private $methodProperties;
 
 
     /**
-     * Model constructor.
+     * ModelBase constructor.
      *
      * @param Settings $settings
      */
     public function __construct(Settings $settings)
     {
-        $this->settings = $settings;
+        $this->settings         = $settings;
+        $this->methodProperties = new MethodProperties([
+          'Language' => $settings->getLanguage(),
+        ]);
 
         $this->setModelName($this->getModelId());
 
@@ -161,7 +165,7 @@ abstract class Model
     /**
      * Get current method properties.
      *
-     * @return array
+     * @return \NovaPoshta\DataBuilders\DataInterface
      */
     public function getMethodProperties()
     {
@@ -180,7 +184,7 @@ abstract class Model
      */
     public function setMethodProperties(array $methodProperties)
     {
-        $this->methodProperties = $methodProperties;
+        $this->methodProperties->set($methodProperties);
 
         return $this;
     }
@@ -191,21 +195,21 @@ abstract class Model
      *
      * @see https://devcenter.novaposhta.ua/docs/services/
      *
-     * @param string $propertyName
-     * @param string $propertyValue
+     * @param string $property
+     * @param string $value
      *
-     * @return \NovaPoshta\Models\Model
+     * @return \NovaPoshta\Models\ModelBase
      */
-    public function setMethodProperty($propertyName, $propertyValue)
+    public function setMethodProperty($property, $value)
     {
-        $this->methodProperties[$propertyName] = $propertyValue;
+        $this->methodProperties->set($property, $value);
 
         return $this;
     }
 
 
     /**
-     * Model name Id.
+     * ModelBase name Id.
      *
      * @return string
      */
