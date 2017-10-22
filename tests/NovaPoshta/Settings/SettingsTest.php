@@ -111,4 +111,26 @@ final class SettingsTest extends TestCase
           $apiHost
         );
     }
+
+
+    public function testSettingsLanguageGet()
+    {
+        $this->settings->language(Settings::NOVA_POSHTA_LANGUAGE_RU);
+
+        $this->assertEquals(
+          Settings::NOVA_POSHTA_LANGUAGE_RU,
+          $this->settings->getLanguage()
+        );
+    }
+
+
+    public function testSettingsLanguageSet()
+    {
+        $this->settings->language('TEST');
+
+        $this->assertEquals(
+          Settings::NOVA_POSHTA_LANGUAGE_UA,
+          $this->settings->getLanguage()
+        );
+    }
 }
