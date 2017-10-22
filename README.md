@@ -1,5 +1,6 @@
 
 [![Build Status](https://travis-ci.org/awd-studio/nova-poshta.svg?branch=master)](https://travis-ci.org/awd-studio/nova-poshta)
+[![Coverage Status](https://coveralls.io/repos/github/awd-studio/nova-poshta/badge.svg?branch=master)](https://coveralls.io/github/awd-studio/nova-poshta?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/awd-studio/nova-poshta/v/stable)](https://packagist.org/packages/awd-studio/nova-poshta)
 [![Total Downloads](https://poser.pugx.org/awd-studio/nova-poshta/downloads)](https://packagist.org/packages/awd-studio/nova-poshta)
 [![License](https://poser.pugx.org/awd-studio/nova-poshta/license)](https://github.com/awd-studio/nova-poshta/blob/master/LICENSE)

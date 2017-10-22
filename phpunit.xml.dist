@@ -9,4 +9,8 @@
             <directory>tests</directory>
         </testsuite>
     </testsuites>
+
+    <logging>
+        <log type="coverage-php" target="build/logs/clover.xml"/>
+    </logging>
 </phpunit>

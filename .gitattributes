@@ -1,6 +1,7 @@
 # Make Composer-friendly project.
 # Ignore some files/directories when installing as --prefer-dist.
 
+/build              export-ignore
 /docs               export-ignore
 /tests              export-ignore
 /.gitattributes     export-ignore
