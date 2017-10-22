@@ -16,7 +16,8 @@ before_script:
   - composer install --prefer-source --no-interaction --dev
 
 script:
-  - vendor/bin/phpunit --coverage-clover=coverage.xml
+  - php vendor/bin/phpunit --configuration ./phpunit.xml.dist --coverage-clover=.reports/clover.xml --coverage-xml=.reports/coverage
+
 
 matrix:
   allow_failures:
