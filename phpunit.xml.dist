@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<phpunit bootstrap="vendor/autoload.php" colors="true"
-         beStrictAboutTestsThatDoNotTestAnything="true"
-         beStrictAboutOutputDuringTests="true"
-         beStrictAboutChangesToGlobalState="true">
+<phpunit bootstrap="vendor/autoload.php" colors="true">
+    <title>Nova Poshta</title>
+         
     <testsuites>
-        <testsuite>
+        <testsuite name="Nova Poshta Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
