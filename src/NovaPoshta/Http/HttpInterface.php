@@ -12,7 +12,7 @@
 namespace NovaPoshta\Http;
 
 
-use \NovaPoshta\Models\Model;
+use \NovaPoshta\Models\ModelBase;
 
 
 /**
@@ -26,10 +26,10 @@ interface HttpInterface
     /**
      * Execute request.
      *
-     * @param Model $model
+     * @param ModelBase $model
      *
      * @return string
      * @throws \NovaPoshta\Exceptions\NpException
      */
-    public function send(Model $model);
+    public function send(ModelBase $model);
 }

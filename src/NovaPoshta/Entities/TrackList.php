@@ -12,7 +12,7 @@
 namespace NovaPoshta\Entities;
 
 
-use ArrayAccess;
+use Countable;
 use Iterator;
 use NovaPoshta\Exceptions\NpException;
 
@@ -22,17 +22,15 @@ use NovaPoshta\Exceptions\NpException;
  *
  * @package NovaPoshta\Entities
  */
-class TrackList implements Iterator, ArrayAccess
+class TrackList implements Iterator, Countable
 {
-
-    private $position = 0;
 
     /**
      * Tracks.
      *
      * @var array
      */
-    private $container = array();
+    private $container = [];
 
 
     /**
@@ -86,7 +84,7 @@ class TrackList implements Iterator, ArrayAccess
      *
      * @return array
      */
-    public function getAll()
+    public function getAllTracks()
     {
         return array_values($this->container);
     }
@@ -122,19 +120,6 @@ class TrackList implements Iterator, ArrayAccess
 
 
     /**
-     * Return the current element
-     *
-     * @link  http://php.net/manual/en/iterator.current.php
-     * @return mixed Can return any type.
-     * @since 5.0.0
-     */
-    public function current()
-    {
-        return $this->container[$this->position];
-    }
-
-
-    /**
      * Move forward to next element
      *
      * @link  http://php.net/manual/en/iterator.next.php
@@ -143,7 +128,7 @@ class TrackList implements Iterator, ArrayAccess
      */
     public function next()
     {
-        ++$this->position;
+        next($this->container);
     }
 
 
@@ -156,7 +141,7 @@ class TrackList implements Iterator, ArrayAccess
      */
     public function key()
     {
-        return $this->position;
+        return key($this->container);
     }
 
 
@@ -170,7 +155,9 @@ class TrackList implements Iterator, ArrayAccess
      */
     public function valid()
     {
-        return isset($this->container[$this->position]);
+        $key = key($this->container);
+
+        return ($key !== null && $key !== false);
     }
 
 
@@ -183,78 +170,34 @@ class TrackList implements Iterator, ArrayAccess
      */
     public function rewind()
     {
-        $this->position = 0;
+        reset($this->container);
     }
 
 
     /**
-     * Whether a offset exists
+     * Return the current element
      *
-     * @link  http://php.net/manual/en/arrayaccess.offsetexists.php
-     *
-     * @param mixed $offset An offset to check for.
-     *
-     * @return boolean true on success or false on failure.
-     * </p>
-     * <p>
-     * The return value will be casted to boolean if non-boolean was returned.
+     * @link  http://php.net/manual/en/iterator.current.php
+     * @return mixed Can return any type.
      * @since 5.0.0
      */
-    public function offsetExists($offset)
+    public function current()
     {
-        return isset($this->container[$offset]);
+        return current($this->container);
     }
 
 
     /**
-     * Offset to retrieve
+     * Count elements of an object
      *
-     * @link  http://php.net/manual/en/arrayaccess.offsetget.php
+     * @link  http://php.net/manual/en/countable.count.php
+     * @return int The custom count as an integer.
      *
-     * @param mixed $offset The offset to retrieve.
-     *
-     * @return mixed Can return all value types.
-     * @since 5.0.0
+     * The return value is cast to an integer.
+     * @since 5.1.0
      */
-    public function offsetGet($offset)
+    public function count()
     {
-        return $this->offsetExists($offset) ? $this->container[$offset] : null;
-    }
-
-
-    /**
-     * Offset to set
-     *
-     * @link  http://php.net/manual/en/arrayaccess.offsetset.php
-     *
-     * @param mixed $offset The offset to assign the value to.
-     * @param mixed $value  he value to set.
-     *
-     * @return void
-     * @since 5.0.0
-     */
-    public function offsetSet($offset, $value)
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-
-    /**
-     * Offset to unset
-     *
-     * @link  http://php.net/manual/en/arrayaccess.offsetunset.php
-     *
-     * @param mixed $offset The offset to unset.
-     *
-     * @return void
-     * @since 5.0.0
-     */
-    public function offsetUnset($offset)
-    {
-        unset($this->container[$offset]);
+        return count($this->container);
     }
 }

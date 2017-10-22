@@ -13,7 +13,7 @@ namespace NovaPoshta\DataBuilders;
 
 use NovaPoshta\Exceptions\NpException;
 use NovaPoshta\Util\Singleton;
-use NovaPoshta\Models\Model;
+use NovaPoshta\Models\ModelBase;
 
 
 /**
@@ -21,7 +21,7 @@ use NovaPoshta\Models\Model;
  *
  * @package NovaPoshta\DataBuilders
  */
-class RequestData implements DataBuildersInterface
+class RequestData implements RequestDataInterface
 {
 
     use Singleton;
@@ -58,20 +58,20 @@ class RequestData implements DataBuildersInterface
     /**
      * Build request data.
      *
-     * @param \NovaPoshta\Models\Model $model Filled Model instance.
-     * @param bool                     $json  If checked JSON-encoded string.
+     * @param \NovaPoshta\Models\ModelBase $model Filled ModelBase instance.
+     * @param bool                         $json  If checked JSON-encoded string.
      *
-     * @return DataBuildersInterface|string
+     * @return RequestDataInterface|string
      * @throws \NovaPoshta\Exceptions\NpException
      */
-    public function build(Model $model, $json = true)
+    public function build(ModelBase $model, $json = true)
     {
         $settings = $model->getSettings();
 
         $this->apiKey           = $settings->getApiKey();
         $this->modelName        = $model->getModelName();
         $this->calledMethod     = $model->getCalledMethod();
-        $this->methodProperties = (object) $model->getMethodProperties();
+        $this->methodProperties = $model->getMethodProperties();
 
         foreach ($this as $property => $value) {
             if ($value === null) {

@@ -11,7 +11,7 @@
 
 namespace NovaPoshta\DataBuilders;
 
-use NovaPoshta\Models\Model;
+use NovaPoshta\Models\ModelBase;
 
 
 /**
@@ -19,13 +19,13 @@ use NovaPoshta\Models\Model;
  *
  * @package NovaPoshta\DataBuilders
  */
-interface DataBuildersInterface
+interface RequestDataInterface
 {
 
     /**
-     * @param \NovaPoshta\Models\Model $model
+     * @param \NovaPoshta\Models\ModelBase $model
      *
-     * @return \NovaPoshta\DataBuilders\DataBuildersInterface
+     * @return \NovaPoshta\DataBuilders\RequestDataInterface
      */
-    public function build(Model $model);
+    public function build(ModelBase $model);
 }

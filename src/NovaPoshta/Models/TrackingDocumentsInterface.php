@@ -26,7 +26,7 @@ interface TrackingDocumentsInterface
 
     /**
      * Track documents status.
-     * Method should invoke Model::send() method.
+     * Method should invoke ModelBase::send() method.
      *
      * @param TrackList $trackList Available track-list.
      *

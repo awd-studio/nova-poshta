@@ -14,7 +14,7 @@ namespace NovaPoshta\Tests\Models;
 
 use NovaPoshta\Models\Address;
 use NovaPoshta\Models\AddressInterface;
-use NovaPoshta\Models\Model;
+use NovaPoshta\Models\ModelBase;
 use NovaPoshta\Settings\Settings;
 use PHPUnit\Framework\TestCase;
 
@@ -38,7 +38,7 @@ final class AddressTest extends TestCase
 
 
     /**
-     * Model instance.
+     * ModelBase instance.
      *
      * @var Address $model
      */
@@ -63,7 +63,7 @@ final class AddressTest extends TestCase
     public function testAddressInstanceClass()
     {
         $this->assertInstanceOf(
-          Model::class,
+          ModelBase::class,
           $this->model
         );
     }
