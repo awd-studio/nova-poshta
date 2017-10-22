@@ -13,6 +13,7 @@ namespace NovaPoshta\Tests\Models;
 
 
 use NovaPoshta\Exceptions\NpException;
+use NovaPoshta\Http\Response;
 use NovaPoshta\Models\Address;
 use NovaPoshta\Models\AddressInterface;
 use NovaPoshta\Models\ModelBase;
@@ -99,5 +100,115 @@ final class AddressTest extends TestCase
 
         $NewAddress = new Address($this->settings);
         $NewAddress->searchSettlementStreets([]);
+    }
+
+
+    public function testAddressGetWarehouses()
+    {
+        $response = $this->model->getWarehouses();
+
+        $this->assertInstanceOf(
+          Response::class,
+          $response
+        );
+
+        $this->assertArrayHasKey('data', $response->getResponse(true));
+    }
+
+
+    public function testAddressGetCities()
+    {
+        $response = $this->model->getCities();
+
+        $this->assertInstanceOf(
+          Response::class,
+          $response
+        );
+
+        $this->assertArrayHasKey('data', $response->getResponse(true));
+    }
+
+
+    public function testAddressGetAreas()
+    {
+        $response = $this->model->getAreas();
+
+        $this->assertInstanceOf(
+          Response::class,
+          $response
+        );
+
+        $this->assertArrayHasKey('data', $response->getResponse(true));
+    }
+
+
+    public function testAddressGetWarehouseTypes()
+    {
+        $response = $this->model->getWarehouseTypes();
+
+        $this->assertInstanceOf(
+          Response::class,
+          $response
+        );
+
+        $this->assertArrayHasKey('data', $response->getResponse(true));
+    }
+
+
+    public function testAddressSearchSettlements()
+    {
+        $response = $this->model->searchSettlements(['CityName' => 'val']);
+
+        $this->assertInstanceOf(
+          Response::class,
+          $response
+        );
+
+        $this->assertArrayHasKey('data', $response->getResponse(true));
+    }
+
+
+    public function testAddressSearchSettlementStreets()
+    {
+        $response = $this->model->searchSettlementStreets([
+          'StreetName'    => 'val',
+          'SettlementRef' => 'val',
+          'Limit'         => 'val',
+        ]);
+
+        $this->assertInstanceOf(
+          Response::class,
+          $response
+        );
+
+        $this->assertArrayHasKey('data', $response->getResponse(true));
+    }
+
+
+    public function testAddressGetStreet()
+    {
+        $response = $this->model->getStreet([
+          'CityRef' => 'val',
+        ]);
+
+        $this->assertInstanceOf(
+          Response::class,
+          $response
+        );
+
+        $this->assertArrayHasKey('data', $response->getResponse(true));
+    }
+
+
+    public function testAddressGetSettlements()
+    {
+        $response = $this->model->getSettlements([]);
+
+        $this->assertInstanceOf(
+          Response::class,
+          $response
+        );
+
+        $this->assertArrayHasKey('data', $response->getResponse(true));
     }
 }

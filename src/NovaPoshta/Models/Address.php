@@ -143,6 +143,9 @@ class Address extends ModelBase implements AddressInterface
     {
         $this->setCalledMethod('searchSettlements');
         $this->setMethodProperties($options);
+        $this->getRequiredProperties([
+          'CityName',
+        ]);
 
         return $this->send();
     }
