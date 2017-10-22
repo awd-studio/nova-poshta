@@ -14,7 +14,7 @@ namespace NovaPoshta\Http;
 
 use NovaPoshta\DataBuilders\RequestData;
 use NovaPoshta\Exceptions\NpException;
-use NovaPoshta\Models\ModelBase;
+use NovaPoshta\Models\Model;
 
 
 /**
@@ -28,12 +28,12 @@ class CurlHttp implements HttpInterface
     /**
      * Execute request.
      *
-     * @param ModelBase $model
+     * @param Model $model
      *
      * @return string
      * @throws \NovaPoshta\Exceptions\NpException
      */
-    public function send(ModelBase $model)
+    public function send(Model $model)
     {
         static $chanel = 0; // keepalive
 

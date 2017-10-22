@@ -9,7 +9,7 @@
 namespace NovaPoshta\Tests\Models;
 
 use NovaPoshta\Http\Response;
-use NovaPoshta\Models\ModelBase;
+use NovaPoshta\Models\Model;
 use NovaPoshta\Models\Payment;
 use NovaPoshta\Models\PaymentInterface;
 use NovaPoshta\Settings\Settings;
@@ -34,7 +34,7 @@ class PaymentTest extends \PHPUnit_Framework_TestCase
 
 
     /**
-     * ModelBase instance.
+     * Model instance.
      *
      * @var Payment $model
      */
@@ -59,7 +59,7 @@ class PaymentTest extends \PHPUnit_Framework_TestCase
     public function testPaymentClass()
     {
         $this->assertInstanceOf(
-          ModelBase::class,
+          Model::class,
           $this->model
         );
     }

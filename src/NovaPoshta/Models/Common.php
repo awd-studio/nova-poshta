@@ -17,12 +17,12 @@ namespace NovaPoshta\Models;
  *
  * @package NovaPoshta\Models
  */
-class Common extends ModelBase implements CommonInterface
+class Common extends Model implements CommonInterface
 {
 
 
     /**
-     * ModelBase name Id.
+     * Model name Id.
      *
      * @return string
      */

@@ -26,7 +26,7 @@ class RequestDataTest extends \PHPUnit_Framework_TestCase
 
 
     /**
-     * ModelBase instance.
+     * Model instance.
      *
      * @var TrackingDocument $model
      */
@@ -42,7 +42,7 @@ class RequestDataTest extends \PHPUnit_Framework_TestCase
 
 
     /**
-     * ModelBase instance.
+     * Model instance.
      *
      * @var object|string $data
      */

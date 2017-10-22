@@ -36,33 +36,24 @@ class Settings
      */
     const NOVA_POSHTA_API_HOST = 'https://api.novaposhta.ua/v2.0/json/';
 
-    const NOVA_POSHTA_LANGUAGE_UA = 'UA';
-
-    const NOVA_POSHTA_LANGUAGE_RU = 'RU';
-
     /**
      * API key.
      *
-     * @var string $apiKey
+     * @var string
      */
     private $apiKey;
 
     /**
      * HTTP driver.
      *
-     * @var HttpInterface $driver
+     * @var HttpInterface
      */
     private $driver;
 
     /**
-     * @var bool $valid
+     * @var bool
      */
     private $valid = false;
-
-    /**
-     * @var string $language
-     */
-    private $language = self::NOVA_POSHTA_LANGUAGE_UA;
 
 
     /**
@@ -113,37 +104,6 @@ class Settings
         } else {
             $this->driver = $driver;
         }
-    }
-
-
-    /**
-     * Set language.
-     *
-     * @param string $language
-     *
-     * @throws \NovaPoshta\Exceptions\NpException
-     */
-    public function language($language = self::NOVA_POSHTA_LANGUAGE_UA)
-    {
-        if (
-          $language === self::NOVA_POSHTA_LANGUAGE_UA ||
-          $language === self::NOVA_POSHTA_LANGUAGE_RU
-        ) {
-            $this->language = $language;
-        } else {
-            $this->language = self::NOVA_POSHTA_LANGUAGE_UA;
-        }
-    }
-
-
-    /**
-     * Get current language.
-     *
-     * @return string
-     */
-    public function getLanguage()
-    {
-        return $this->language;
     }
 
 

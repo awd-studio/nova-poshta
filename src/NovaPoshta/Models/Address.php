@@ -11,7 +11,6 @@
 
 namespace NovaPoshta\Models;
 
-use NovaPoshta\DataBuilders\DataBuilderBase;
 use NovaPoshta\Settings\Settings;
 
 
@@ -22,12 +21,12 @@ use NovaPoshta\Settings\Settings;
  *
  * @see     https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43
  */
-class Address extends ModelBase implements AddressInterface
+class Address extends Model implements AddressInterface
 {
 
 
     /**
-     * ModelBase name Id.
+     * Model name Id.
      *
      * @return string
      */
@@ -41,18 +40,10 @@ class Address extends ModelBase implements AddressInterface
      * Get Nova Poshta warehouses.
      *
      * @param array $options
-     *   CityName      string (optional) CityName      [max 36 char]
-     *   CityRef       string (optional) CityRef       [max 36 char]
-     *   Page          int    (optional) Page          [max 10 char]
-     *   Limit         int    (optional) Limit         [max 10 char]
-     *   Language      string (optional) Language      [max  2 char]
-     *   SettlementRef string (optional) SettlementRef [max 36 char]
-     *
-     * @see https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/556d8211a0fe4f08e8f7ce45
      *
      * @return \NovaPoshta\Http\Response
      */
-    public function getWarehouses(array $options = [])
+    public function getWarehouses($options = [])
     {
         $this->setCalledMethod('getWarehouses');
         $this->setMethodProperties($options);
@@ -69,7 +60,7 @@ class Address extends ModelBase implements AddressInterface
      *
      * @return array|string
      */
-    public static function getBranches(Settings $settings, array $options = [])
+    public static function getBranches(Settings $settings, $options = [])
     {
         $model    = new self($settings);
         $response = $model->getWarehouses($options);

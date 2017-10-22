@@ -11,7 +11,7 @@ namespace NovaPoshta\Tests\Models;
 use NovaPoshta\Http\Response;
 use NovaPoshta\Models\Common;
 use NovaPoshta\Models\CommonInterface;
-use NovaPoshta\Models\ModelBase;
+use NovaPoshta\Models\Model;
 use NovaPoshta\Settings\Settings;
 use PHPUnit\Framework\TestCase;
 
@@ -42,7 +42,7 @@ class CommonTest extends TestCase
 
 
     /**
-     * ModelBase instance.
+     * Model instance.
      *
      * @var Common $model
      */
@@ -67,7 +67,7 @@ class CommonTest extends TestCase
     public function testCommonClass()
     {
         $this->assertInstanceOf(
-          ModelBase::class,
+          Model::class,
           $this->model
         );
     }

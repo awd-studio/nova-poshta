@@ -14,7 +14,7 @@ namespace NovaPoshta\Http;
 
 use NovaPoshta\DataBuilders\RequestData;
 use NovaPoshta\Exceptions\NpException;
-use NovaPoshta\Models\ModelBase;
+use NovaPoshta\Models\Model;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
@@ -30,12 +30,12 @@ class GuzzleHttp implements HttpInterface
     /**
      * Execute request.
      *
-     * @param ModelBase $model
+     * @param Model $model
      *
      * @return string
      * @throws \NovaPoshta\Exceptions\NpException
      */
-    public function send(ModelBase $model)
+    public function send(Model $model)
     {
         $response = null;
 

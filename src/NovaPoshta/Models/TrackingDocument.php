@@ -23,7 +23,7 @@ use NovaPoshta\Settings\Settings;
  *
  * @see     https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55702cbba0fe4f0cf4fc53ee
  */
-class TrackingDocument extends ModelBase implements TrackingDocumentsInterface
+class TrackingDocument extends Model implements TrackingDocumentsInterface
 {
 
     /**
@@ -37,7 +37,7 @@ class TrackingDocument extends ModelBase implements TrackingDocumentsInterface
 
 
     /**
-     * ModelBase name Id.
+     * Model name Id.
      *
      * @return string
      */
@@ -82,7 +82,7 @@ class TrackingDocument extends ModelBase implements TrackingDocumentsInterface
 
         $this->setCalledMethod('getStatusDocuments');
         $this->setMethodProperties([
-          'Documents' => $this->getTrackList()->getAllTracks(),
+          'Documents' => $this->getTrackList()->getAll(),
         ]);
 
         return $this->send();

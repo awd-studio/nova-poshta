@@ -17,11 +17,11 @@ namespace NovaPoshta\Models;
  *
  * @package NovaPoshta\Models
  */
-class Payment extends ModelBase implements PaymentInterface
+class Payment extends Model implements PaymentInterface
 {
 
     /**
-     * ModelBase name Id.
+     * Model name Id.
      *
      * @return string
      */
