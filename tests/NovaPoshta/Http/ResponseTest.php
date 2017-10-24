@@ -90,9 +90,6 @@ final class ResponseTest extends TestCase
     }
 
 
-    /**
-     * @covers Response::build
-     */
     public function testResponseBuild()
     {
         $response = Response::build($this->rawResponse);
