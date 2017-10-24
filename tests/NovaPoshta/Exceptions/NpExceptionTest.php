@@ -15,9 +15,17 @@ namespace NovaPoshta\Tests\Exceptions;
 use NovaPoshta\Exceptions\NpException;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class NpExceptionTest
+ *
+ * @package NovaPoshta\Tests\Exceptions
+ */
 final class NpExceptionTest extends TestCase
 {
 
+    /**
+     * @covers \NovaPoshta\Exceptions\NpException::__construct
+     */
     public function testNpExceptionInstance()
     {
         $this->expectException(NpException::class);

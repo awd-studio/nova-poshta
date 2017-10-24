@@ -8,7 +8,7 @@
          stopOnFailure="false"
          forceCoversAnnotation="true">
     <title>Nova Poshta</title>
-         
+
     <testsuites>
         <testsuite name="Nova Poshta Test Suite">
             <directory>tests</directory>
@@ -23,5 +23,8 @@
 
     <logging>
         <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <log type="coverage-html" target="build/logs/report" charset="UTF-8"
+             yui="true" highlight="true"
+             lowUpperBound="50" highLowerBound="80"/>
     </logging>
 </phpunit>

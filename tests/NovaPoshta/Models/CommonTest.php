@@ -55,6 +55,9 @@ class CommonTest extends TestCase
     const METHOD_ID = 'Common';
 
 
+    /**
+     * Settings up.
+     */
     public function setUp()
     {
         parent::setUp();
@@ -64,6 +67,9 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @inheritdoc
+     */
     public function testCommonClass()
     {
         $this->assertInstanceOf(
@@ -73,6 +79,9 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @inheritdoc
+     */
     public function testCommonInterface()
     {
         $this->assertInstanceOf(
@@ -82,12 +91,19 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getModelId
+     */
     public function testCommonGetModelId()
     {
         $this->assertEquals(self::METHOD_ID, $this->model->getModelId());
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getCargoTypes
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetModelGetCargoTypes()
     {
         $response = $this->model->getCargoTypes();
@@ -101,6 +117,10 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getBackwardDeliveryCargoTypes
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetBackwardDeliveryCargoTypes()
     {
         $response = $this->model->getBackwardDeliveryCargoTypes();
@@ -114,6 +134,10 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getPalletsList
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetPalletsList()
     {
         $response = $this->model->getPalletsList();
@@ -127,6 +151,10 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getTypesOfPayers
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetTypesOfPayers()
     {
         $response = $this->model->getTypesOfPayers();
@@ -140,6 +168,10 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getTypesOfPayersForRedelivery
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetTypesOfPayersForRedelivery()
     {
         $response = $this->model->getTypesOfPayersForRedelivery();
@@ -153,6 +185,10 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getPackList
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetPackList()
     {
         $response = $this->model->getPackList();
@@ -166,6 +202,10 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getTiresWheelsList
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetTiresWheelsList()
     {
         $response = $this->model->getTiresWheelsList();
@@ -179,6 +219,10 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getCargoDescriptionList
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetCargoDescriptionList()
     {
         $response = $this->model->getCargoDescriptionList();
@@ -192,6 +236,10 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getMessageCodeText
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetMessageCodeText()
     {
         $response = $this->model->getMessageCodeText();
@@ -205,6 +253,10 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getServiceTypes
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetServiceTypes()
     {
         $response = $this->model->getServiceTypes();
@@ -218,6 +270,10 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getTypesOfCounterparties
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetTypesOfCounterparties()
     {
         $response = $this->model->getTypesOfCounterparties();
@@ -231,6 +287,10 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getPaymentForms
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetPaymentForms()
     {
         $response = $this->model->getPaymentForms();
@@ -244,6 +304,10 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getOwnershipFormsList
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetOwnershipFormsList()
     {
         $response = $this->model->getOwnershipFormsList();
@@ -257,6 +321,10 @@ class CommonTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Common::getTimeIntervals
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testCommonGetTimeIntervals()
     {
         $response = $this->model->getTimeIntervals($this->recipientCityRef);

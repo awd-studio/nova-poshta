@@ -20,6 +20,11 @@ use NovaPoshta\Models\ModelBase;
 use NovaPoshta\Settings\Settings;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class AddressTest
+ *
+ * @package NovaPoshta\Tests\Models
+ */
 final class AddressTest extends TestCase
 {
 
@@ -53,6 +58,9 @@ final class AddressTest extends TestCase
     const METHOD_ID = 'Address';
 
 
+    /**
+     * Settings up.
+     */
     public function setUp()
     {
         parent::setUp();
@@ -62,6 +70,9 @@ final class AddressTest extends TestCase
     }
 
 
+    /**
+     * @inheritdoc
+     */
     public function testAddressInstanceClass()
     {
         $this->assertInstanceOf(
@@ -71,6 +82,9 @@ final class AddressTest extends TestCase
     }
 
 
+    /**
+     * @inheritdoc
+     */
     public function testAddressInstanceInterface()
     {
         $this->assertInstanceOf(
@@ -80,12 +94,18 @@ final class AddressTest extends TestCase
     }
 
 
-    public function testGetModelId()
+    /**
+     * @covers \NovaPoshta\Models\Address::getModelId
+     */
+    public function testAddressGetModelId()
     {
         $this->assertEquals(self::METHOD_ID, $this->model->getModelId());
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Address::getBranches
+     */
     public function testAddress()
     {
         $address = Address::getBranches($this->settings);
@@ -94,6 +114,9 @@ final class AddressTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Address::searchSettlementStreets
+     */
     public function testAddressGetRequiredPropertiesException()
     {
         $this->expectException(NpException::class);
@@ -103,6 +126,10 @@ final class AddressTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Address::getWarehouses
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testAddressGetWarehouses()
     {
         $response = $this->model->getWarehouses();
@@ -116,6 +143,10 @@ final class AddressTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Address::getCities
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testAddressGetCities()
     {
         $response = $this->model->getCities();
@@ -129,6 +160,10 @@ final class AddressTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Address::getAreas
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testAddressGetAreas()
     {
         $response = $this->model->getAreas();
@@ -142,6 +177,10 @@ final class AddressTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Address::getWarehouseTypes
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testAddressGetWarehouseTypes()
     {
         $response = $this->model->getWarehouseTypes();
@@ -155,6 +194,10 @@ final class AddressTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Address::searchSettlements
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testAddressSearchSettlements()
     {
         $response = $this->model->searchSettlements(['CityName' => 'val']);
@@ -168,6 +211,10 @@ final class AddressTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Address::searchSettlementStreets
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testAddressSearchSettlementStreets()
     {
         $response = $this->model->searchSettlementStreets([
@@ -185,6 +232,10 @@ final class AddressTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Address::getStreet
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testAddressGetStreet()
     {
         $response = $this->model->getStreet([
@@ -200,6 +251,10 @@ final class AddressTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Address::getSettlements
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testAddressGetSettlements()
     {
         $response = $this->model->getSettlements([]);

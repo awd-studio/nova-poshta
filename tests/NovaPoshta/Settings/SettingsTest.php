@@ -12,6 +12,7 @@
 namespace NovaPoshta\Tests\Settings;
 
 
+use Error;
 use NovaPoshta\Exceptions\NpException;
 use NovaPoshta\Http\CurlHttp;
 use NovaPoshta\Http\HttpInterface;
@@ -35,15 +36,29 @@ final class SettingsTest extends TestCase
      */
     private $key = 'myAPIkey';
 
+    /**
+     * Driver.
+     *
+     * @var HttpInterface
+     */
+    private $driver;
 
+
+    /**
+     * Settings up.
+     */
     public function setUp()
     {
         parent::setUp();
 
         $this->settings = Settings::getInstance()->auth($this->key);
+        $this->driver   = new CurlHttp();
     }
 
 
+    /**
+     * @covers \NovaPoshta\Settings\Settings::getInstance
+     */
     public function testSettingsSettingsInstance()
     {
         $this->assertInstanceOf(
@@ -53,12 +68,19 @@ final class SettingsTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Settings\Settings::isValid
+     */
     public function testSettingsValidationKey()
     {
         $this->assertTrue($this->settings->isValid(), 'Validation filled key');
     }
 
 
+    /**
+     * @covers \NovaPoshta\Settings\Settings::setApiKey
+     * @covers \NovaPoshta\Settings\Settings::isValid
+     */
     public function testSettingsValidationSetApiKey()
     {
         $this->settings->setApiKey('');
@@ -66,17 +88,22 @@ final class SettingsTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Settings\Settings::getApiKey
+     */
     public function testSettingsKey()
     {
         $this->assertEquals($this->settings->getApiKey(), $this->key);
     }
 
 
+    /**
+     * @covers \NovaPoshta\Settings\Settings::auth
+     * @covers \NovaPoshta\Settings\Settings::getDriver
+     */
     public function testSettingsDriver()
     {
-        $driver = new CurlHttp();
-
-        $settings = Settings::getInstance()->auth($this->key, $driver);
+        $settings = Settings::getInstance()->auth($this->key, $this->driver);
 
         $this->assertInstanceOf(
           HttpInterface::class,
@@ -85,6 +112,26 @@ final class SettingsTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Settings\Settings::auth
+     * @covers \NovaPoshta\Settings\Settings::setDriver
+     */
+    public function testSettingsSetDriver()
+    {
+        $settings = Settings::getInstance()->auth($this->key);
+        $settings->setDriver($this->driver);
+
+        $this->assertInstanceOf(
+          HttpInterface::class,
+          $settings->getDriver()
+        );
+    }
+
+
+    /**
+     * @covers \NovaPoshta\Settings\Settings::getDriver
+     * @covers \NovaPoshta\Settings\Settings::getDefaultDriver
+     */
     public function testSettingsDefaultDriver()
     {
         $this->assertInstanceOf(
@@ -94,6 +141,9 @@ final class SettingsTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Settings\Settings::auth
+     */
     public function testSettingsAuthException()
     {
         $this->expectException(NpException::class);
@@ -102,6 +152,9 @@ final class SettingsTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Settings\Settings::getApiHost
+     */
     public function testSettingsApiHostIsUrl()
     {
         $apiHost = Settings::getApiHost();
@@ -113,6 +166,10 @@ final class SettingsTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Settings\Settings::language
+     * @covers \NovaPoshta\Settings\Settings::getLanguage
+     */
     public function testSettingsLanguageGet()
     {
         $this->settings->language(Settings::NOVA_POSHTA_LANGUAGE_RU);
@@ -124,7 +181,10 @@ final class SettingsTest extends TestCase
     }
 
 
-    public function testSettingsLanguageSet()
+    /**
+     * @covers \NovaPoshta\Settings\Settings::language
+     */
+    public function testSettingsLanguageSetDefault()
     {
         $this->settings->language('TEST');
 

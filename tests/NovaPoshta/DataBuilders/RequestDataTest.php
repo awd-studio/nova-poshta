@@ -9,10 +9,16 @@
 namespace NovaPoshta\Tests\DataBuilders;
 
 use NovaPoshta\DataBuilders\RequestData;
+use NovaPoshta\DataBuilders\RequestDataInterface;
 use NovaPoshta\Exceptions\NpException;
 use NovaPoshta\Models\TrackingDocument;
 use NovaPoshta\Settings\Settings;
 
+/**
+ * Class RequestDataTest
+ *
+ * @package NovaPoshta\Tests\DataBuilders
+ */
 class RequestDataTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -57,6 +63,15 @@ class RequestDataTest extends \PHPUnit_Framework_TestCase
     private $key = 'myAPIkey';
 
 
+    /**
+     * Settings up.
+     *
+     * @covers \NovaPoshta\Settings\Settings::getInstance
+     * @covers \NovaPoshta\Settings\Settings::auth
+     * @covers \NovaPoshta\Models\TrackingDocument::__construct
+     * @covers \NovaPoshta\DataBuilders\RequestData::__construct
+     * @covers \NovaPoshta\DataBuilders\RequestData::build
+     */
     public function setUp()
     {
         parent::setUp();
@@ -68,15 +83,22 @@ class RequestDataTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    /**
+     * @inheritdoc
+     */
     public function testRequestDataInstanceClass()
     {
         $this->assertInstanceOf(
-          RequestData::class,
+          RequestDataInterface::class,
           $this->requestData
         );
     }
 
 
+    /**
+     * @covers \NovaPoshta\DataBuilders\RequestData::__construct
+     * @covers \NovaPoshta\DataBuilders\RequestData::build
+     */
     public function testRequestDataBuildObject()
     {
         $object = RequestData::getInstance()->build($this->model, false);
@@ -88,12 +110,21 @@ class RequestDataTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\DataBuilders\RequestData::build
+     */
     public function testRequestDataBuildJson()
     {
         $this->assertJson($this->data);
     }
 
 
+    /**
+     * @covers \NovaPoshta\DataBuilders\RequestData::getInstance
+     * @covers \NovaPoshta\DataBuilders\RequestData::build
+     * @covers \NovaPoshta\Exceptions\NpException::__construct
+     * @covers \NovaPoshta\Models\TrackingDocument::__construct
+     */
     public function testRequestDataBuildException()
     {
         $this->expectException(NpException::class);

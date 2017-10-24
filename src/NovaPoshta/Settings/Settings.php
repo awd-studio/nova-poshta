@@ -156,6 +156,7 @@ class Settings
      */
     private function getDefaultDriver()
     {
+        // @codeCoverageIgnoreStart
         if (class_exists('GuzzleHttp\\Client')) {
             $driver = new GuzzleHttp;
         } elseif (function_exists('curl_init')) {
@@ -163,6 +164,8 @@ class Settings
         } else {
             throw new NpException('You need to install Guzzle library or php_curl om your server!');
         }
+
+        // @codeCoverageIgnoreEnd
 
         return $driver;
     }

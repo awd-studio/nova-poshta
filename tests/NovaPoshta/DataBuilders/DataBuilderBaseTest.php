@@ -15,6 +15,11 @@ use NovaPoshta\DataBuilders\DataInterface;
 use NovaPoshta\Exceptions\NpException;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class DataBuilderBaseTest
+ *
+ * @package NovaPoshta\Tests\DataBuilders
+ */
 class DataBuilderBaseTest extends TestCase
 {
 
@@ -32,11 +37,22 @@ class DataBuilderBaseTest extends TestCase
      */
     private $dataBuilder;
 
+    /**
+     * @var string
+     */
     private $testVal = 'testValue';
 
+    /**
+     * @var string
+     */
     private $testProp = 'testProp';
 
 
+    /**
+     * Settings up.
+     *
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::__construct
+     */
     public function setUp()
     {
         parent::setUp();
@@ -45,6 +61,9 @@ class DataBuilderBaseTest extends TestCase
     }
 
 
+    /**
+     * @inheritdoc
+     */
     public function testDataBuilderBaseClass()
     {
         $this->assertInstanceOf(
@@ -54,6 +73,10 @@ class DataBuilderBaseTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::set
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::get
+     */
     public function testDataBuilderBaseInterfaceDataInterface()
     {
         $this->assertInstanceOf(
@@ -63,6 +86,13 @@ class DataBuilderBaseTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::current
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::next
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::key
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::valid
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::rewind
+     */
     public function testDataBuilderBaseInterfaceIterator()
     {
         $this->assertInstanceOf(
@@ -72,6 +102,9 @@ class DataBuilderBaseTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::count
+     */
     public function testDataBuilderBaseInterfaceCountable()
     {
         $this->assertInstanceOf(
@@ -81,6 +114,10 @@ class DataBuilderBaseTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Exceptions\NpException::__construct
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::set
+     */
     public function testDataBuilderBaseSetException()
     {
         $this->expectException(NpException::class);
@@ -89,6 +126,10 @@ class DataBuilderBaseTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::set
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::get
+     */
     public function testDataBuilderBaseSetGet()
     {
         $this->dataBuilder->set($this->testProp, $this->testVal);
@@ -100,6 +141,10 @@ class DataBuilderBaseTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::set
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::count
+     */
     public function testDataBuilderBaseForeach()
     {
         $count    = 5;
@@ -120,6 +165,10 @@ class DataBuilderBaseTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::set
+     * @covers \NovaPoshta\DataBuilders\DataBuilderBase::count
+     */
     public function testDataBuilderBaseCount()
     {
         $this->dataBuilder->set($this->testProp, $this->testVal);

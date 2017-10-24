@@ -14,6 +14,11 @@ use NovaPoshta\Models\Payment;
 use NovaPoshta\Models\PaymentInterface;
 use NovaPoshta\Settings\Settings;
 
+/**
+ * Class PaymentTest
+ *
+ * @package NovaPoshta\Tests\Models
+ */
 class PaymentTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -47,6 +52,9 @@ class PaymentTest extends \PHPUnit_Framework_TestCase
     const METHOD_ID = 'Payment';
 
 
+    /**
+     * Settings up.
+     */
     public function setUp()
     {
         parent::setUp();
@@ -56,6 +64,9 @@ class PaymentTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    /**
+     * @inheritdoc
+     */
     public function testPaymentClass()
     {
         $this->assertInstanceOf(
@@ -65,6 +76,9 @@ class PaymentTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    /**
+     * @inheritdoc
+     */
     public function testPaymentInterface()
     {
         $this->assertInstanceOf(
@@ -74,12 +88,19 @@ class PaymentTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Payment::getModelId
+     */
     public function testPaymentGetModelId()
     {
         $this->assertEquals(self::METHOD_ID, $this->model->getModelId());
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\Payment::getCards
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testPaymentGetModelGetCargoTypes()
     {
         $response = $this->model->getCards();

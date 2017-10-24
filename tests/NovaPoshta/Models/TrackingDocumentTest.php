@@ -20,6 +20,12 @@ use NovaPoshta\Models\TrackingDocument;
 use NovaPoshta\Settings\Settings;
 use PHPUnit\Framework\TestCase;
 
+
+/**
+ * Class TrackingDocumentTest
+ *
+ * @package NovaPoshta\Tests\Models
+ */
 final class TrackingDocumentTest extends TestCase
 {
 
@@ -81,6 +87,9 @@ final class TrackingDocumentTest extends TestCase
     const METHOD_ID = 'TrackingDocument';
 
 
+    /**
+     * Settings up.
+     */
     public function setUp()
     {
         parent::setUp();
@@ -102,6 +111,9 @@ final class TrackingDocumentTest extends TestCase
     }
 
 
+    /**
+     * @inheritdoc
+     */
     public function testTrackingDocumentInstanceClass()
     {
         $this->assertInstanceOf(
@@ -111,6 +123,9 @@ final class TrackingDocumentTest extends TestCase
     }
 
 
+    /**
+     * @inheritdoc
+     */
     public function testTrackingDocumentInstanceInterface()
     {
         $this->assertInstanceOf(
@@ -120,12 +135,19 @@ final class TrackingDocumentTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\TrackingDocument::getModelId
+     */
     public function testGetModelId()
     {
         $this->assertEquals(self::METHOD_ID, $this->model->getModelId());
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\TrackingDocument::setTrackList
+     * @covers \NovaPoshta\Models\TrackingDocument::getTrackList
+     */
     public function testTrackingDocumentTrackNum()
     {
         $this->model->setTrackList($this->trackNum);
@@ -135,6 +157,11 @@ final class TrackingDocumentTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Models\TrackingDocument::getStatusDocuments
+     * @covers \NovaPoshta\Entities\TrackList::__construct
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function testTrackingDocumentGetStatusDocuments()
     {
         $trackList = new TrackList($this->trackNum);

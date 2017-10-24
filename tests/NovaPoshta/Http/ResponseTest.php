@@ -15,6 +15,11 @@ namespace NovaPoshta\Tests\Http;
 use NovaPoshta\Http\Response;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class ResponseTest
+ *
+ * @package NovaPoshta\Tests\Http
+ */
 final class ResponseTest extends TestCase
 {
 
@@ -52,6 +57,12 @@ final class ResponseTest extends TestCase
     protected $responseData;
 
 
+    /**
+     * Settings up.
+     *
+     * @covers \NovaPoshta\Http\Response::__construct
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
     public function setUp()
     {
         parent::setUp();
@@ -62,12 +73,20 @@ final class ResponseTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Http\Response::__construct
+     * @covers \NovaPoshta\Http\Response::completeResponse
+     */
     public function testResponseDataType()
     {
         $this->assertTrue(is_array($this->responseData));
     }
 
 
+    /**
+     * @covers \NovaPoshta\Http\Response::__construct
+     * @covers \NovaPoshta\Http\Response::completeResponse
+     */
     public function testResponseGetResponse()
     {
         $this->assertArrayHasKey('param1', $this->responseData);
@@ -75,12 +94,18 @@ final class ResponseTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Http\Response::__construct
+     */
     public function testResponseGetRawResponseIsJson()
     {
         $this->assertJson($this->rawResponse);
     }
 
 
+    /**
+     * @covers \NovaPoshta\Http\Response::__construct
+     */
     public function testResponseGetRawResponse()
     {
         $this->assertJsonStringEqualsJsonString(
@@ -90,6 +115,9 @@ final class ResponseTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Http\Response::build
+     */
     public function testResponseBuild()
     {
         $response = Response::build($this->rawResponse);

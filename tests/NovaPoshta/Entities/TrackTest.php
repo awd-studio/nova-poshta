@@ -15,17 +15,32 @@ namespace NovaPoshta\Tests\Entities;
 use NovaPoshta\Entities\Track;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class TrackTest
+ *
+ * @package NovaPoshta\Tests\Entities
+ */
 final class TrackTest extends TestCase
 {
 
+    /**
+     * @var string
+     */
     private static $trackNumStatic = '01234567890123';
 
+    /**
+     * @var string
+     */
     private static $phoneStatic = '380000001122';
 
-    /** @var Track */
+    /**
+     * @var Track
+     */
     private $track;
 
-    /** @var Track */
+    /**
+     * @var Track with phone number.
+     */
     private $trackWithPhone;
 
 
@@ -42,6 +57,11 @@ final class TrackTest extends TestCase
     }
 
 
+    /**
+     * Settings up.
+     *
+     * @covers \NovaPoshta\Entities\Track::__construct
+     */
     protected function setUp()
     {
         parent::setUp();
@@ -55,9 +75,12 @@ final class TrackTest extends TestCase
 
 
     /**
+     * @param string|array $currentTrack
+     *
      * @dataProvider trackProvider
      *
-     * @param string|array $currentTrack
+     * @covers       \NovaPoshta\Entities\Track::__construct
+     * @covers       \NovaPoshta\Entities\Track::getId
      */
     public function testTrack($currentTrack)
     {
@@ -67,6 +90,9 @@ final class TrackTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Entities\Track::getPhone
+     */
     public function testTrackGetPhone()
     {
         $track = $this->trackWithPhone;
@@ -75,6 +101,9 @@ final class TrackTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Entities\Track::build
+     */
     public function testTrackBuildHasTrack()
     {
         $track = $this->trackWithPhone;
@@ -83,6 +112,9 @@ final class TrackTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\Entities\Track::build
+     */
     public function testTrackBuildHasPhone()
     {
         $track = $this->trackWithPhone;

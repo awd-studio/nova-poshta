@@ -11,6 +11,11 @@ namespace NovaPoshta\Tests\DataBuilders;
 use NovaPoshta\DataBuilders\MethodProperties;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class MethodPropertiesTest
+ *
+ * @package NovaPoshta\Tests\DataBuilders
+ */
 class MethodPropertiesTest extends TestCase
 {
 
@@ -29,11 +34,22 @@ class MethodPropertiesTest extends TestCase
      */
     private $dataBuilder;
 
+    /**
+     * @var string
+     */
     private $testVal = 'testValue';
 
+    /**
+     * @var string
+     */
     private $testProp = 'testProp';
 
 
+    /**
+     * Settings up.
+     *
+     * @covers \NovaPoshta\DataBuilders\MethodProperties::__construct
+     */
     public function setUp()
     {
         parent::setUp();
@@ -43,6 +59,9 @@ class MethodPropertiesTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\DataBuilders\MethodProperties::__construct
+     */
     public function testMethodPropertiesClass()
     {
         $this->assertInstanceOf(
@@ -52,6 +71,9 @@ class MethodPropertiesTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\DataBuilders\MethodProperties::jsonSerialize
+     */
     public function testMethodPropertiesJsonSerialize()
     {
         $this->assertInstanceOf(
@@ -61,6 +83,9 @@ class MethodPropertiesTest extends TestCase
     }
 
 
+    /**
+     * @covers \NovaPoshta\DataBuilders\MethodProperties::jsonSerialize
+     */
     public function testMethodPropertiesJson()
     {
         $json = json_encode($this->dataBuilder);

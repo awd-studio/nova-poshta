@@ -14,6 +14,8 @@ namespace NovaPoshta\Util;
 
 /**
  * Singleton Trait.
+ *
+ * Avoid many instances of Singleton.
  */
 trait Singleton
 {
@@ -25,18 +27,27 @@ trait Singleton
 
 
     /**
-     * Avoid many instances of Settings.
+     * @inheritdoc
+     * @codeCoverageIgnore
      */
     private final function __construct()
     {
     }
 
 
+    /**
+     * @inheritdoc
+     * @codeCoverageIgnore
+     */
     private final function __clone()
     {
     }
 
 
+    /**
+     * @inheritdoc
+     * @codeCoverageIgnore
+     */
     private final function __wakeup()
     {
     }
@@ -49,9 +60,10 @@ trait Singleton
      */
     public final static function getInstance()
     {
+        // @codeCoverageIgnoreStart
         if (!self::$instance) {
             self::$instance = new self;
-        }
+        } // @codeCoverageIgnoreEnd
 
         return self::$instance;
     }

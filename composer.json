@@ -48,6 +48,8 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "test": "vendor/bin/phpunit",
+        "coverage": "vendor/bin/phpunit -c ./phpunit.xml.dist",
+        "coveralls": "php vendor/bin/coveralls -v"
     }
 }
