@@ -72,11 +72,13 @@ class Settings
      */
     public function isValid()
     {
-        return $this->valid = !empty($this->apiKey) && $this->driver !== null;
+        return $this->valid = (!empty($this->apiKey) && $this->driver !== null);
     }
 
 
     /**
+     * Get API key.
+     *
      * @return string
      */
     public function getApiKey()
@@ -86,6 +88,8 @@ class Settings
 
 
     /**
+     * Set API key.
+     *
      * @param string $apiKey
      */
     public function setApiKey($apiKey)
@@ -95,6 +99,8 @@ class Settings
 
 
     /**
+     * Get HTTP driver.
+     *
      * @return HttpInterface
      */
     public function getDriver()
@@ -104,7 +110,11 @@ class Settings
 
 
     /**
+     * Set HTTP driver.
+     *
      * @param HttpInterface|null $driver
+     *
+     * @return $this
      */
     public function setDriver(HttpInterface $driver = null)
     {
@@ -113,6 +123,8 @@ class Settings
         } else {
             $this->driver = $driver;
         }
+
+        return $this;
     }
 
 
@@ -194,7 +206,10 @@ class Settings
     public function auth($key, HttpInterface $driver = null)
     {
         $this->setApiKey($key);
-        $this->setDriver($driver);
+
+        if (isset($driver) || !$this->isValid()) {
+            $this->setDriver($driver);
+        }
 
         if ($this->isValid()) {
             return $this;

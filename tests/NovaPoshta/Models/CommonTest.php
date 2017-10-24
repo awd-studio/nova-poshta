@@ -1,13 +1,18 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: awd
- * Date: 20.10.17
- * Time: 8:46
+ * @file
+ * This file is part of Nova-Poshta PHP library.
+ *
+ * @author   Anton Karpov <awd.com.ua@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT
+ * @link     https://github.com/awd-studio/nova-poshta
  */
 
 namespace NovaPoshta\Tests\Models;
 
+use NovaPoshta\Http\CurlHttp;
+use NovaPoshta\Http\HttpInterface;
 use NovaPoshta\Http\Response;
 use NovaPoshta\Models\Common;
 use NovaPoshta\Models\CommonInterface;
@@ -54,6 +59,13 @@ class CommonTest extends TestCase
      */
     const METHOD_ID = 'Common';
 
+    /**
+     * Driver.
+     *
+     * @var HttpInterface
+     */
+    private $driver;
+
 
     /**
      * Settings up.
@@ -62,7 +74,10 @@ class CommonTest extends TestCase
     {
         parent::setUp();
 
-        $this->settings = Settings::getInstance()->auth($this->key);
+        $this->driver   = new CurlHttp();
+        $this->settings = Settings::getInstance()
+                                  ->setDriver($this->driver)
+                                  ->auth($this->key);
         $this->model    = new Common($this->settings);
     }
 
@@ -103,6 +118,7 @@ class CommonTest extends TestCase
     /**
      * @covers \NovaPoshta\Models\Common::getCargoTypes
      * @covers \NovaPoshta\Http\Response::getResponse
+     * @covers \NovaPoshta\Http\CurlHttp::send
      */
     public function testCommonGetModelGetCargoTypes()
     {
@@ -120,6 +136,7 @@ class CommonTest extends TestCase
     /**
      * @covers \NovaPoshta\Models\Common::getBackwardDeliveryCargoTypes
      * @covers \NovaPoshta\Http\Response::getResponse
+     * @covers \NovaPoshta\Http\CurlHttp::send
      */
     public function testCommonGetBackwardDeliveryCargoTypes()
     {
@@ -137,6 +154,7 @@ class CommonTest extends TestCase
     /**
      * @covers \NovaPoshta\Models\Common::getPalletsList
      * @covers \NovaPoshta\Http\Response::getResponse
+     * @covers \NovaPoshta\Http\CurlHttp::send
      */
     public function testCommonGetPalletsList()
     {
@@ -154,6 +172,7 @@ class CommonTest extends TestCase
     /**
      * @covers \NovaPoshta\Models\Common::getTypesOfPayers
      * @covers \NovaPoshta\Http\Response::getResponse
+     * @covers \NovaPoshta\Http\CurlHttp::send
      */
     public function testCommonGetTypesOfPayers()
     {

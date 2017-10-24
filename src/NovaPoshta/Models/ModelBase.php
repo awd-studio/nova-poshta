@@ -84,14 +84,15 @@ abstract class ModelBase
     {
         try {
             return new Response($this->settings->getDriver()->send($this));
-        } catch (NpException $exception) {
+        } // @codeCoverageIgnoreStart
+        catch (NpException $exception) {
             $error = json_encode([
               'success' => false,
               'errors'  => [$exception->getMessage()],
             ]);
 
             return new Response($error);
-        }
+        } // @codeCoverageIgnoreEnd
     }
 
 

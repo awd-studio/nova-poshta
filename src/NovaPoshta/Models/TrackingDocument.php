@@ -84,6 +84,9 @@ class TrackingDocument extends ModelBase implements TrackingDocumentsInterface
         $this->setMethodProperties([
           'Documents' => $this->getTrackList()->getAllTracks(),
         ]);
+        $this->getRequiredProperties([
+          'Documents',
+        ]);
 
         return $this->send();
     }

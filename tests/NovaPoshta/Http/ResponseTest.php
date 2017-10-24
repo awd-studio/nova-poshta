@@ -12,6 +12,7 @@
 namespace NovaPoshta\Tests\Http;
 
 
+use NovaPoshta\Exceptions\NpException;
 use NovaPoshta\Http\Response;
 use PHPUnit\Framework\TestCase;
 
@@ -75,6 +76,40 @@ final class ResponseTest extends TestCase
 
     /**
      * @covers \NovaPoshta\Http\Response::__construct
+     */
+    public function testResponseConstructorException()
+    {
+        $this->expectException(NpException::class);
+
+        new Response(null);
+    }
+
+
+    /**
+     * @covers \NovaPoshta\Http\Response::completeResponse
+     */
+    public function testResponseCompleteResponse()
+    {
+        $this->expectException(NpException::class);
+
+        $count    = 513;
+        $fakeJson = str_repeat('{', $count) . str_repeat('}', $count);
+
+        new Response($fakeJson);
+    }
+
+
+    /**
+     * @covers \NovaPoshta\Http\Response::getResponse
+     */
+    public function testResponseGetResponseString()
+    {
+        $this->assertFalse(is_array($this->response->getResponse(false)));
+    }
+
+
+    /**
+     * @covers \NovaPoshta\Http\Response::__construct
      * @covers \NovaPoshta\Http\Response::completeResponse
      */
     public function testResponseDataType()
@@ -104,13 +139,13 @@ final class ResponseTest extends TestCase
 
 
     /**
-     * @covers \NovaPoshta\Http\Response::__construct
+     * @covers \NovaPoshta\Http\Response::getRawResponse
      */
     public function testResponseGetRawResponse()
     {
         $this->assertJsonStringEqualsJsonString(
           json_encode($this->data),
-          $this->rawResponse
+          $this->response->getRawResponse()
         );
     }
 

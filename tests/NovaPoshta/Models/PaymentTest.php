@@ -1,13 +1,17 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: awd
- * Date: 20.10.17
- * Time: 10:25
+ * @file
+ * This file is part of Nova-Poshta PHP library.
+ *
+ * @author   Anton Karpov <awd.com.ua@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT
+ * @link     https://github.com/awd-studio/nova-poshta
  */
 
 namespace NovaPoshta\Tests\Models;
 
+use NovaPoshta\Http\GuzzleHttp;
 use NovaPoshta\Http\Response;
 use NovaPoshta\Models\ModelBase;
 use NovaPoshta\Models\Payment;
@@ -59,7 +63,9 @@ class PaymentTest extends \PHPUnit_Framework_TestCase
     {
         parent::setUp();
 
-        $this->settings = Settings::getInstance()->auth($this->key);
+        $this->settings = Settings::getInstance()
+                                  ->setDriver(new GuzzleHttp())
+                                  ->auth($this->key);
         $this->model    = new Payment($this->settings);
     }
 
@@ -99,7 +105,9 @@ class PaymentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers \NovaPoshta\Models\Payment::getCards
+     * @covers \NovaPoshta\Models\ModelBase::send
      * @covers \NovaPoshta\Http\Response::getResponse
+     * @covers \NovaPoshta\Http\GuzzleHttp::send
      */
     public function testPaymentGetModelGetCargoTypes()
     {

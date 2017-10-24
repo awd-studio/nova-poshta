@@ -137,6 +137,7 @@ final class TrackingDocumentTest extends TestCase
 
     /**
      * @covers \NovaPoshta\Models\TrackingDocument::getModelId
+     * @covers \NovaPoshta\Models\TrackingDocument::setModelName
      */
     public function testGetModelId()
     {

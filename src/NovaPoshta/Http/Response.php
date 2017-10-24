@@ -34,7 +34,7 @@ class Response
     /**
      * Completed response.
      *
-     * @var array
+     * @var mixed
      */
     protected $response;
 
