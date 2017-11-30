@@ -28,11 +28,13 @@ interface TrackingDocumentsInterface
      * Track documents status.
      * Method should invoke ModelBase::send() method.
      *
-     * @param TrackList $trackList Available track-list.
+     * @param mixed $documents Available track-list.
      *
      * @see \NovaPoshta\Entities\TrackList::__construct
      *
+     * @link https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55702cbba0fe4f0cf4fc53ee
+     *
      * @return \NovaPoshta\Http\Response
      */
-    public function getStatusDocuments(TrackList $trackList);
+    public function getStatusDocuments($documents);
 }

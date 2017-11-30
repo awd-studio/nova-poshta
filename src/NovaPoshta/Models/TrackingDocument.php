@@ -70,22 +70,25 @@ class TrackingDocument extends ModelBase implements TrackingDocumentsInterface
     /**
      * Track documents status.
      *
-     * @param TrackList $trackList Available track-list.
+     * @param mixed $documents Available track-list.
      *
      * @see \NovaPoshta\Entities\TrackList::__construct
      *
+     * @link https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55702cbba0fe4f0cf4fc53ee
+     *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
-    public function getStatusDocuments(TrackList $trackList)
+    public function getStatusDocuments($documents)
     {
-        $this->setTrackList($trackList);
+        $this->setTrackList(new TrackList($documents));
 
         $this->setCalledMethod('getStatusDocuments');
         $this->setMethodProperties([
-          'Documents' => $this->getTrackList()->getAllTracks(),
+            'Documents' => $this->getTrackList()->getAllTracks(),
         ]);
         $this->getRequiredProperties([
-          'Documents',
+            'Documents',
         ]);
 
         return $this->send();
@@ -96,16 +99,17 @@ class TrackingDocument extends ModelBase implements TrackingDocumentsInterface
      * Track package.
      *
      * @param Settings $settings
-     * @param mixed    $trackList
+     * @param mixed $trackList
      *
      * @see \NovaPoshta\Entities\TrackList::__construct
      *
      * @return array|string
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public static function track(Settings $settings, $trackList)
     {
-        $model    = new self($settings);
-        $response = $model->getStatusDocuments(new TrackList($trackList));
+        $model = new self($settings);
+        $response = $model->getStatusDocuments($trackList);
 
         return $response->getResponse();
     }
