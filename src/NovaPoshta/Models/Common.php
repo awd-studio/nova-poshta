@@ -38,6 +38,7 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838909
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getCargoTypes()
     {
@@ -53,6 +54,7 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838907
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getBackwardDeliveryCargoTypes()
     {
@@ -68,6 +70,7 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/5824774ba0fe4f0e60694eb0
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getPalletsList()
     {
@@ -83,6 +86,7 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838913
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getTypesOfPayers()
     {
@@ -98,6 +102,7 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838914
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getTypesOfPayersForRedelivery()
     {
@@ -118,19 +123,20 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/582b1069a0fe4f0298618f06
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getPackList(
-      $length = null,
-      $width = null,
-      $height = null,
-      $typeOfPacking = null
+        $length = null,
+        $width = null,
+        $height = null,
+        $typeOfPacking = null
     ) {
         $this->setCalledMethod('getPackList');
         $this->setMethodProperties([
-          'Length'        => $length,
-          'Width'         => $width,
-          'Height'        => $height,
-          'TypeOfPacking' => $typeOfPacking,
+            'Length'        => $length,
+            'Width'         => $width,
+            'Height'        => $height,
+            'TypeOfPacking' => $typeOfPacking,
         ]);
 
         return $this->send();
@@ -143,6 +149,7 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838910
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getTiresWheelsList()
     {
@@ -161,13 +168,14 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838908
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getCargoDescriptionList($findByString = null, $page = null)
     {
         $this->setCalledMethod('getCargoDescriptionList');
         $this->setMethodProperties([
-          'FindByString' => $findByString,
-          'Page'         => $page,
+            'FindByString' => $findByString,
+            'Page'         => $page,
         ]);
 
         return $this->send();
@@ -180,6 +188,7 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/58f0730deea270153c8be3cd
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getMessageCodeText()
     {
@@ -195,6 +204,7 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890e
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getServiceTypes()
     {
@@ -210,6 +220,7 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b64838912
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getTypesOfCounterparties()
     {
@@ -225,6 +236,7 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890d
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getPaymentForms()
     {
@@ -240,6 +252,7 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890b
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getOwnershipFormsList()
     {
@@ -258,13 +271,14 @@ class Common extends ModelBase implements CommonInterface
      * @link https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890f
      *
      * @return \NovaPoshta\Http\Response
+     * @throws \NovaPoshta\Exceptions\NpException
      */
     public function getTimeIntervals($recipientCityRef, $dateTime = null)
     {
         $this->setCalledMethod('getTimeIntervals');
         $this->setMethodProperties([
-          'RecipientCityRef' => $recipientCityRef,
-          'DateTime'         => $dateTime,
+            'RecipientCityRef' => $recipientCityRef,
+            'DateTime'         => $dateTime,
         ]);
 
         return $this->send();

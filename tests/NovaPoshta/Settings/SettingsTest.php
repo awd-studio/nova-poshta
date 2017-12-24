@@ -12,7 +12,6 @@
 namespace NovaPoshta\Tests\Settings;
 
 
-use Error;
 use NovaPoshta\Exceptions\NpException;
 use NovaPoshta\Http\CurlHttp;
 use NovaPoshta\Http\HttpInterface;
@@ -52,7 +51,7 @@ final class SettingsTest extends TestCase
         parent::setUp();
 
         $this->settings = Settings::getInstance()->auth($this->key);
-        $this->driver   = new CurlHttp();
+        $this->driver = new CurlHttp();
     }
 
 
@@ -62,8 +61,8 @@ final class SettingsTest extends TestCase
     public function testSettingsSettingsInstance()
     {
         $this->assertInstanceOf(
-          Settings::class,
-          Settings::getInstance()
+            Settings::class,
+            Settings::getInstance()
         );
     }
 
@@ -106,8 +105,8 @@ final class SettingsTest extends TestCase
         $settings = Settings::getInstance()->auth($this->key, $this->driver);
 
         $this->assertInstanceOf(
-          HttpInterface::class,
-          $settings->getDriver()
+            HttpInterface::class,
+            $settings->getDriver()
         );
     }
 
@@ -122,8 +121,8 @@ final class SettingsTest extends TestCase
         $settings->setDriver($this->driver);
 
         $this->assertInstanceOf(
-          HttpInterface::class,
-          $settings->getDriver()
+            HttpInterface::class,
+            $settings->getDriver()
         );
     }
 
@@ -135,8 +134,8 @@ final class SettingsTest extends TestCase
     public function testSettingsDefaultDriver()
     {
         $this->assertInstanceOf(
-          HttpInterface::class,
-          $this->settings->getDriver()
+            HttpInterface::class,
+            $this->settings->getDriver()
         );
     }
 
@@ -160,8 +159,8 @@ final class SettingsTest extends TestCase
         $apiHost = Settings::getApiHost();
 
         $this->assertRegExp(
-          '/^https:\/\/?[\da-z\.-]+\.[a-z\.]{2,6}[\/\w \.-]*\/json\/$/',
-          $apiHost
+            '/^https:\/\/?[\da-z\.-]+\.[a-z\.]{2,6}[\/\w \.-]*\/json\/$/',
+            $apiHost
         );
     }
 
@@ -175,8 +174,8 @@ final class SettingsTest extends TestCase
         $this->settings->language(Settings::NOVA_POSHTA_LANGUAGE_RU);
 
         $this->assertEquals(
-          Settings::NOVA_POSHTA_LANGUAGE_RU,
-          $this->settings->getLanguage()
+            Settings::NOVA_POSHTA_LANGUAGE_RU,
+            $this->settings->getLanguage()
         );
     }
 
@@ -189,8 +188,8 @@ final class SettingsTest extends TestCase
         $this->settings->language('TEST');
 
         $this->assertEquals(
-          Settings::NOVA_POSHTA_LANGUAGE_UA,
-          $this->settings->getLanguage()
+            Settings::NOVA_POSHTA_LANGUAGE_UA,
+            $this->settings->getLanguage()
         );
     }
 }

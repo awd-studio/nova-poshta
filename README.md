@@ -150,14 +150,14 @@ $options = [
     //'CityName' => 'Ки',
     //'CityName' => 'Киї',
 ];
-$response = $model->searchSettlements($options); // Get towns list
+$response = $address->searchSettlements($options); // Get towns list
 
 $options = [
     'StreetName'    => 'Шев',
     'SettlementRef' => 'e715719e-4b33-11e4-ab6d-005056801329',
     'Limit'         => 10,
 ];
-$response = $model->searchSettlements($options); // Get streets
+$response = $address->searchSettlements($options); // Get streets
 ```
 
 **Common dictionaries:**
@@ -184,6 +184,6 @@ $response = $common->getTimeIntervals($recipientCityRef);
 
 // Get warehouse types
 $address  = new Address($settings);
-$response = $model->getWarehouseTypes();
+$response = $address->getWarehouseTypes();
 ```
 [See details.](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed) All methods implements.
