@@ -1,45 +1,7 @@
+# This package is deprecated!
+## This package is abandoned and no longer maintained. The author suggests using the [awd-studio/novaposhta](https://github.com/awd-studio/NovaPoshta) package instead.
 
-[![Build Status](https://travis-ci.org/awd-studio/nova-poshta.svg?branch=master)](https://travis-ci.org/awd-studio/nova-poshta)
-[![Coverage Status](https://coveralls.io/repos/github/awd-studio/nova-poshta/badge.svg)](https://coveralls.io/github/awd-studio/nova-poshta)
-[![Latest Stable Version](https://poser.pugx.org/awd-studio/nova-poshta/v/stable)](https://packagist.org/packages/awd-studio/nova-poshta)
-[![Total Downloads](https://poser.pugx.org/awd-studio/nova-poshta/downloads)](https://packagist.org/packages/awd-studio/nova-poshta)
-[![License](https://poser.pugx.org/awd-studio/nova-poshta/license)](https://github.com/awd-studio/nova-poshta/blob/master/LICENSE)
-
-
-# PHP SDK for Nova Poshta API (alpha)
-## Integrate your PHP apps with [Nova Poshta](https://novaposhta.ua) post company API
-
-This open-source library allows you to integrate Nova Poshta API into your apps.
-
-
-### About Nova Poshta company:
-
-Today Nova Poshta is a leader in express delivery owing to its innovation approach and hard work on efficiency improvement. By anticipating Client needs, the company constantly comes up with new products and services.
-
-Nova Poshta’s business isn’t solely about parcels and cargoes delivery. We pride ourselves in e-commerce market development and deployment of complex technological solutions helping businesses to expand on the international scale.
-
-Nova Poshta puts into your service:
-
-- Over 2500 depots all over Ukraine
-- Over 2500 vehicles
-- 36 cutting-edge sorting stations
-- Over 16 000 qualified employees
-- More than 60 million shipments a year
-- Over 350 cash desks carrying out money transfers
-- Modern logistics complex of 4000 sq. m.
-- Transparent fees and loyalty programs
-- Dedicated customer service and support
-- Track and Trace
-
-*[More information](https://novaposhta.ua/en/o_kompanii/nova_poshta_sogodni).*
-
-## Features
-- Track packages
-- Getting branch-offices
-- Getting common dictionaries
-- ~~Counting delivery cost~~ *(future)*
-- ~~Determine the date of delivery~~ *(future)*
-- ~~Contingency (TTN) management~~ *(future)*
+-----
 
 ## Requirements
 - PHP v5.5 or higher *(PHP 7+ is recommended)*
